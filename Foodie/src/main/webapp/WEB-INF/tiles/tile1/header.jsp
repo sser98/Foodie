@@ -28,72 +28,42 @@
 	//System.out.println("serverName : " + serverName);
 	//serverName : http://192.168.50.65:9090 
 %>
-<div align="center">
-	<ul class="nav nav-tabs mynav">
-		<li class="dropdown"><a class="dropdown-toggle"
-			data-toggle="dropdown" href="#">Home <span class="caret"></span></a>
-			<ul class="dropdown-menu">
-				<li><a href="<%=ctxPath%>/index.action">Home</a></li>
-				<li><a href="<%=ctxPath%>/deliciousStore.action">전국맛집</a></li>
-				<li><a href="<%= serverName%><%=ctxPath%>/chatting/multichat.action">웹채팅</a></li>
-			</ul></li>
-		<li class="dropdown"><a class="dropdown-toggle"
-			data-toggle="dropdown" href="#">게시판 <span class="caret"></span></a>
-			<ul class="dropdown-menu">
-				<li><a href="<%=ctxPath%>/list.action">목록보기</a></li>
-				
-		   <%-- <c:if test="${not empty sessionScope.loginuser}"> --%>
-				<li><a href="<%=ctxPath%>/add.action">글쓰기</a></li>
-		   <%--	</c:if>  --%>
-				
-				<li><a href="#">Submenu 1-3</a></li>
-			</ul></li>
-		<li class="dropdown"><a class="dropdown-toggle"
-			data-toggle="dropdown" href="#">로그인 <span class="caret"></span></a>
-			<ul class="dropdown-menu">
-				<c:if test="${empty sessionScope.loginuser}">
-				<li><a href="#">회원가입</a></li>
-				<li><a href="<%=ctxPath%>/login.action">로그인</a></li>
-				</c:if>
-				
-				<c:if test="${not empty sessionScope.loginuser}">
-				<li><a href="<%=ctxPath%>/myinfo.action">나의정보</a></li>
-				<li><a href="<%=ctxPath%>/logout.action">로그아웃</a></li>
-				</c:if>
-			</ul></li>
-		
-		<!-- === #169. 제품등록(다중파일첨부)및 제품정보 메뉴 추가하기 === -->		
-   <%-- <c:if test="${sessionScope.loginuser.gradelevel == 10 }">  --%>
-		<li class="dropdown"><a class="dropdown-toggle"
-			data-toggle="dropdown" href="#">제품등록(다중파일첨부) <span class="caret"></span></a>
-			<ul class="dropdown-menu">
-			    <li><a href="<%=ctxPath%>/product/addProduct.action">제품등록</a></li>
-				<li><a href="<%=ctxPath%>/product/storeProduct.action">제품입고</a></li>
-			</ul></li>
-   <%-- </c:if>   --%>
-		
-		<li class="dropdown"><a class="dropdown-toggle"
-			data-toggle="dropdown" href="#">인사관리 <span class="caret"></span></a>
-			<ul class="dropdown-menu">
-				<li><a href="<%=ctxPath%>/emp/empList.action">직원목록</a></li>
-				<li><a href="<%=ctxPath%>/emp/chart.action">통계차트</a></li>
-			</ul>
-		</li>
-		
-		<li class="dropdown"><a class="dropdown-toggle"
-			data-toggle="dropdown" href="#">제품정보 <span class="caret"></span></a>
-			<ul class="dropdown-menu">
-				<li><a href="<%=ctxPath%>/product/listProduct.action">제품목록</a></li>
-			</ul>
-		</li>
-	
-	
-	<!-- === #49. 로그인이 성공되어지면 로그인되어진 사용자의 이메일 주소를 출력하기 === -->
-	<c:if test="${not empty sessionScope.loginuser}">
-		<div style="float: right; margin-top: 0.5%; border: solid 0px red;">
-		  <span style="color: navy; font-weight: bold; font-size: 10pt;">${sessionScope.loginuser.email}</span> 님 로그인중.. 
-		</div>
-	</c:if>
-	
-	</ul>
-</div>    
+ <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__logo">
+                        <a href="./index.html"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9">
+                    <div class="header__nav">
+                        <nav class="header__menu mobile-menu">
+                            <ul>
+                                <li class="active"><a href="./index.html">Home</a></li>
+                                <li><a href="./listing.html">Listing</a></li>
+                                <li><a href="#">Categories</a></li>
+                                <li><a href="#">Pages</a>
+                                    <ul class="dropdown">
+                                        <li><a href="./about.html">About</a></li>
+                                        <li><a href="./listing-details.html">Listing Details</a></li>
+                                        <li><a href="./blog-details.html">Blog Details</a></li>
+                                        <li><a href="./contact.html">Contact</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="./blog.html">Blog</a></li>
+                                <li><a href="#">Shop</a></li>
+                            </ul>
+                        </nav>
+                        <div class="header__menu__right">
+                            <a href="#" class="primary-btn"><i class="fa fa-plus"></i>Add Listing</a>
+                            <a href="#" class="login-btn"><i class="fa fa-user"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header Section End -->
