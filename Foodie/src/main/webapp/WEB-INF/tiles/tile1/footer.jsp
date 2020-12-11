@@ -16,28 +16,29 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="footer__about">
+                    <!-- Footer 로고 -->
                         <div class="footer__about__logo">
-                            <a href="./index.html"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/footer-logo.png" alt=""></a>
+                            <a href="./index.html"><img src="<%=ctxPath %>/resources/img/footer-logo.png" alt=""></a>
                         </div>
-                        <p>Challenging the way things have always been done can lead to creative new options that reward
-                            you.</p>
+                        <p>Eat, Share, Be Happy.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 offset-lg-1 col-md-6">
                     <div class="footer__address">
                         <ul>
                             <li>
-                                <span>Call Us:</span>
+                                <span>연락처:</span>
                                 <p>(+12) 345-678-910</p>
                             </li>
                             <li>
                                 <span>Email:</span>
-                                <p>info.colorlib@gmail .com</p>
+                                <p>Foodie@gmail .com</p>
                             </li>
                             <li>
                                 <span>Fax:</span>
                                 <p>(+12) 345-678-910</p>
                             </li>
+                            <!--  sns 로고 
                             <li>
                                 <span>Connect Us:</span>
                                 <div class="footer__social">
@@ -47,24 +48,23 @@
                                     <a href="#"><i class="fa fa-skype"></i></a>
                                 </div>
                             </li>
+                            -->
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 offset-lg-1 col-md-6">
                     <div class="footer__widget">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Support</a></li>
-                            <li><a href="#">How it work</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">회사소개</a></li>
+                            <li><a href="#">투자정보</a></li>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">이용약관</a></li>
                         </ul>
                         <ul>
-                            <li><a href="#">Sign In</a></li>
-                            <li><a href="#">How it Work</a></li>
-                            <li><a href="#">Advantages</a></li>
-                            <li><a href="#">Direo App</a></li>
-                            <li><a href="#">Packages</a></li>
+                            <li><a href="#">개인정보처리방침</a></li>
+                            <li><a href="#">위치기반서비스</a></li>
+                            <li><a href="#">커뮤니티</a></li>
+                            <li><a href="#">문의하기</a></li>
                         </ul>
                     </div>
                 </div>
@@ -73,13 +73,16 @@
                 <div class="col-lg-12">
                     <div class="footer__copyright">
                         <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  Copyright &copy;2020 Foodie Co., Ltd. All rights reserved.
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                         </div>
                         <div class="footer__copyright__links">
-                            <a href="#">Terms</a>
-                            <a href="#">Privacy Policy</a>
-                            <a href="#">Cookie Policy</a>
+                            <ul style="list-style-type: none; font-size: 10pt;">
+                            	<li>(주)푸디</li>
+                            	<li>서울특별시 마포구 서교동 447-5 풍성빌딩 2,3,4층</li>
+                            	<li>강사:SEO YOUNG HAK(서영학)</li>
+                            	<li>연락처:02-336-8546</li>
+                            </ul>
                         </div>
                     </div>
                 </div>

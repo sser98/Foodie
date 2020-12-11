@@ -24,87 +24,6 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3 col-md-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-9">
-                    <div class="header__nav">
-                        <nav class="header__menu mobile-menu">
-                            <ul>
-                                <li class="active"><a href="./index.html">Home</a></li>
-                                <li><a href="./listing.html">Listing</a></li>
-                                <li><a href="#">Categories</a></li>
-                                <li><a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./about.html">About</a></li>
-                                        <li><a href="./listing-details.html">Listing Details</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
-                                        <li><a href="./contact.html">Contact</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="./blog.html">Blog</a></li>
-                                <li><a href="#">Shop</a></li>
-                            </ul>
-                        </nav>
-                        <div class="header__menu__right">
-                            <a href="#" class="primary-btn"><i class="fa fa-plus"></i>Add Listing</a>
-                            <a href="#" class="login-btn"><i class="fa fa-user"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="mobile-menu-wrap"></div>
-        </div>
-    </header>
-    <!-- Header Section End -->
-
-    <!-- Hero Section Begin -->
-    <section class="hero set-bg" data-setbg="<%=ctxPath %>/resources/img/hero/hero-bg.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="hero__text">
-                        <div class="section-title">
-                            <h2>Discover The Best Services Near You</h2>
-                            <p>1.118.940.376 The best service package is waiting for you</p>
-                        </div>
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <input type="text" placeholder="Search...">
-                                <div class="select__option">
-                                    <select>
-                                        <option value="">Choose Categories</option>
-                                    </select>
-                                </div>
-                                <div class="select__option">
-                                    <select>
-                                        <option value="">Choose Location</option>
-                                    </select>
-                                </div>
-                                <button type="submit">Explore Now</button>
-                            </form>
-                        </div>
-                        <ul class="hero__categories__tags">
-                            <li><a href="#"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/hero/cat-1.png" alt=""> Restaurent</a></li>
-                            <li><a href="#"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/hero/cat-2.png" alt=""> Food & Drink</a></li>
-                            <li><a href="#"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/hero/cat-3.png" alt=""> Shopping</a></li>
-                            <li><a href="#"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/hero/cat-4.png" alt=""> Beauty</a></li>
-                            <li><a href="#"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/hero/cat-5.png" alt=""> Hotels</a></li>
-                            <li><a href="#"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/hero/cat-6.png" alt=""> All Categories</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
-
     <!-- Categories Section Begin -->
     <section class="categories spad">
         <div class="container">
@@ -113,33 +32,6 @@
                     <div class="section-title">
                         <h2>Most Popular Categories</h2>
                         <p>Travelocity empowers travelers who are giving back on their trips in ways big and small</p>
-                    </div>
-                    <div class="categories__item__list">
-                        <div class="categories__item">
-                            <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/categories/cat-1.png" alt="">
-                            <h5>Food & Drink</h5>
-                            <span>78 Listings</span>
-                        </div>
-                        <div class="categories__item">
-                            <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/categories/cat-2.png" alt="">
-                            <h5>Restaurent</h5>
-                            <span>32 Listings</span>
-                        </div>
-                        <div class="categories__item">
-                            <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/categories/cat-3.png" alt="">
-                            <h5>Hotels</h5>
-                            <span>16 Listings</span>
-                        </div>
-                        <div class="categories__item">
-                            <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/categories/cat-4.png" alt="">
-                            <h5>Beauty & Spa</h5>
-                            <span>55 Listings</span>
-                        </div>
-                        <div class="categories__item">
-                            <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/categories/cat-5.png" alt="">
-                            <h5>Shopping</h5>
-                            <span>23 Listings</span>
-                        </div>
                     </div>
                 </div>
             </div>

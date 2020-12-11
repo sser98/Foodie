@@ -33,31 +33,23 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 col-md-3">
+                <!-- 로고 -->
                     <div class="header__logo">
-                        <a href="./index.html"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/logo.png" alt=""></a>
+                        <a href="./index.html"><img src="<%=ctxPath %>/resources/img/Logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9">
                     <div class="header__nav">
+                    <!-- 헤더 기능 버튼 -->
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="active"><a href="./index.html">Home</a></li>
-                                <li><a href="./listing.html">Listing</a></li>
-                                <li><a href="#">Categories</a></li>
-                                <li><a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./about.html">About</a></li>
-                                        <li><a href="./listing-details.html">Listing Details</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
-                                        <li><a href="./contact.html">Contact</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="./blog.html">Blog</a></li>
-                                <li><a href="#">Shop</a></li>
+                                <li class="active"><a href="<%=ctxPath %>/index.foodie">Home</a></li>
+                                <li><a href="./listing.html">식당게시판</a></li>
+                                <li><a href="#">유저게시판</a></li>
                             </ul>
                         </nav>
+                        <!-- 유저모양 로그인 버튼 -->
                         <div class="header__menu__right">
-                            <a href="#" class="primary-btn"><i class="fa fa-plus"></i>Add Listing</a>
                             <a href="#" class="login-btn"><i class="fa fa-user"></i></a>
                         </div>
                     </div>
@@ -66,4 +58,37 @@
             <div id="mobile-menu-wrap"></div>
         </div>
     </header>
+    
+    <!-- 검색 기능 및 메인화면 로딩시 출력문장 -->
+    <section class="hero set-bg" data-setbg="<%=ctxPath %>/resources/img/hero/hero-bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="hero__text">
+                    
+                    <!-- 머릿말 -->
+                        <div class="section-title">
+                            <h2 style="margin-top: 20px;">솔직한 리뷰, 믿을 수 있는 평점! <br>Foodie</h2>
+                        </div>
+                        <div class="hero__search__form">
+                            <form action="#">
+                                <div class="select__option">
+                                    <select>
+                                        <option value="" >지역</option>
+                                    </select>
+                                </div>
+                                <div class="select__option">
+                                    <select>
+                                        <option value="">세부지역</option>
+                                    </select>
+                                </div>
+                                <input type="text" placeholder="지역,식당 또는 음식">
+                                <button type="submit">검색</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Header Section End -->
