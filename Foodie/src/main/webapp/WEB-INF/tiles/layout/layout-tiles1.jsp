@@ -23,10 +23,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="<%=request.getContextPath() %>/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script> 
    
-   <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Css Styles -->
+     <!-- Css Styles -->
   <link rel="stylesheet" type="text/css" href="<%=ctxPath %>/resources/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="<%=ctxPath %>/resources/css/font-awesome.min.css" />
   <link rel="stylesheet" type="text/css" href="<%=ctxPath %>/resources/css/elegant-icons.css" />
@@ -38,7 +35,10 @@
   <link rel="stylesheet" type="text/css" href="<%=ctxPath %>/resources/css/owl.carousel.min.css" />
   <link rel="stylesheet" type="text/css" href="<%=ctxPath %>/resources/css/slicknav.min.css" />
   <link rel="stylesheet" type="text/css" href="<%=ctxPath %>/resources/css/style.css" />
-  
+   
+     <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+   
   <%--  ===== #179. 스피너를 사용하기 위해  jquery-ui 사용하기 ===== --%>
   <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/jquery-ui-1.11.4.custom/jquery-ui.css" />
   <script type="text/javascript" src="<%= request.getContextPath() %>/resources/jquery-ui-1.11.4.custom/jquery-ui.js"></script>

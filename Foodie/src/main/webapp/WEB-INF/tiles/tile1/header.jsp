@@ -28,6 +28,7 @@
 	//System.out.println("serverName : " + serverName);
 	//serverName : http://192.168.50.65:9090 
 %>
+
  <!-- Header Section Begin -->
     <header class="header">
         <div class="container-fluid">
@@ -43,8 +44,8 @@
                     <!-- 헤더 기능 버튼 -->
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="active"><a href="<%=ctxPath %>/index.foodie">Home</a></li>
-                                <li><a href="./listing.html">식당게시판</a></li>
+                                <li class="active"><a href="<%=ctxPath %>/index.food">Home</a></li>
+                                <li><a href="<%=ctxPath %>/storeBoard/storeMain.food">식당게시판</a></li>
                                 <li><a href="#">유저게시판</a></li>
                             </ul>
                         </nav>
@@ -92,3 +93,16 @@
         </div>
     </section>
     <!-- Header Section End -->
+    
+ <!-- Js Plugins -->
+    <script src="<%=ctxPath %>/resources/js/jquery-3.3.1.min.js"></script>
+    <script src="<%=ctxPath %>/resources/js/bootstrap.min.js"></script>
+    <script src="<%=ctxPath %>/resources/js/jquery.nice-select.min.js"></script>
+    <script src="<%=ctxPath %>/resources/js/jquery-ui.min.js"></script>
+    <script src="<%=ctxPath %>/resources/js/jquery.nicescroll.min.js"></script>
+    <script src="<%=ctxPath %>/resources/js/jquery.barfiller.js"></script>
+    <script src="<%=ctxPath %>/resources/js/jquery.magnific-popup.min.js"></script>
+    <script src="<%=ctxPath %>/resources/js/jquery.slicknav.js"></script>
+    <script src="<%=ctxPath %>/resources/js/owl.carousel.min.js"></script>
+    <script src="<%=ctxPath %>/resources/js/main.js"></script>
+    

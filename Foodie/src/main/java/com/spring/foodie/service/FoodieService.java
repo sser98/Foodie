@@ -1,5 +1,7 @@
 package com.spring.foodie.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,20 @@ public class FoodieService implements InterFoodieService {
 	private InterFoodieDAO dao;
 	// Type 에 따라 Spring 컨테이너가 알아서 bean 으로 등록된 com.spring.model.BoardDAO 의 bean 을  dao 에 주입시켜준다. 
     // 그러므로 dao 는 null 이 아니다.
+
+	@Override
+	public List<SearchVO> getStoreList(String place) {
+		List<SearchVO> storeList = dao.getStoreList(place);
+		return storeList;
+	}
+
+	@Override
+	public SearchVO getStoreDetail(String code) {
+		
+		SearchVO svo = dao.getStoreDetail(code);
+		
+		return svo;
+	}
 
 	
 	// === #45. 양방향 암호화 알고리즘인 AES256 를 사용하여 복호화 하기 위한 클래스 의존객체 주입하기(DI: Dependency Injection) ===
