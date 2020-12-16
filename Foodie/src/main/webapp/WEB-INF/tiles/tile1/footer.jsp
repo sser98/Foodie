@@ -18,7 +18,7 @@
                     <div class="footer__about">
                     <!-- Footer 로고 -->
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="<%=ctxPath %>/resources/img/footer-logo.png" alt=""></a>
+                            <a href="./index.food"><img src="<%=ctxPath %>/resources/images/foodie_logo.png" style="width:200px; height:100px;"></a>
                         </div>
                         <p>Eat, Share, Be Happy.</p>
                     </div>

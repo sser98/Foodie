@@ -11,8 +11,8 @@
 
 	// === #165. (웹채팅관련3) === 
 	// === 서버 IP 주소 알아오기(사용중인 IP주소가 유동IP 이라면 IP주소를 알아와야 한다.) ===
-	InetAddress inet = InetAddress.getLocalHost(); 
-	String serverIP = inet.getHostAddress();
+	//InetAddress inet = InetAddress.getLocalHost(); 
+	//String serverIP = inet.getHostAddress();
 	
 	//System.out.println("serverIP : " + serverIP);
 	// serverIP : 192.168.56.65
@@ -20,14 +20,46 @@
 	// String serverIP = "192.168.50.65"; 만약에 사용중인 IP주소가 고정IP 이라면 IP주소를 직접입력해주면 된다.
 	
 	// === 서버 포트번호 알아오기   ===
-	int portnumber = request.getServerPort();
+	//int portnumber = request.getServerPort();
 	//System.out.println("portnumber : " + portnumber);
 	// portnumber : 9090
 	
-	String serverName = "http://"+serverIP+":"+portnumber; 
+	//String serverName = "http://"+serverIP+":"+portnumber; 
 	//System.out.println("serverName : " + serverName);
 	//serverName : http://192.168.50.65:9090 
 %>
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		
+		
+		
+		
+	});
+
+function goSearch() {
+
+		if( $("input#searchWord").val() == "" ){
+			alert('검색어를 입력하세요.');
+			return;
+		}
+	
+		$("input#searchWord").keyup(function(event){
+			if(event.keyCode == 13) { // 엔터를 했을 경우
+				goSearch(); //검색실행
+			}
+		});
+	
+	var frm = document.searchFrm;
+	frm.method = "GET";
+	frm.action = "<%= request.getContextPath()%>/list.food";
+	frm.submit();
+}// end of function goSearch() {}-----------------------
+
+</script>
+
  <!-- Header Section Begin -->
     <header class="header">
         <div class="container-fluid">
@@ -35,7 +67,7 @@
                 <div class="col-lg-3 col-md-3">
                 <!-- 로고 -->
                     <div class="header__logo">
-                        <a href="./index.html"><img src="<%=ctxPath %>/resources/img/Logo.png" alt=""></a>
+                        <a href="./index.food"><img src="<%=ctxPath %>/resources/images/foodie_logo.png" style="width:200px; height:100px;"alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9">
@@ -68,23 +100,52 @@
                     
                     <!-- 머릿말 -->
                         <div class="section-title">
-                            <h2 style="margin-top: 20px;">솔직한 리뷰, 믿을 수 있는 평점! <br>Foodie</h2>
+                            <h3 style="margin-top: 20px;">솔직한 리뷰, 믿을 수 있는 평점! </h3>
+                            <br>
+                            <h3>Foodie</h3>
                         </div>
                         <div class="hero__search__form">
-                            <form action="#">
+                        
+                        
+                            <form name="searchFrm">
                                 <div class="select__option">
-                                    <select>
-                                        <option value="" >지역</option>
+                                    <select name="searchType" id="searchType">
+                                        <option selected>지역</option> <!-- 경기도~제주도 -->
+                                        <option value="">서울특별시</option>                                       
+                                        <option value="">인천광역시</option>
+                                        <option value="">대전광역시</option>
+                                        <option value="">대구광역시</option>
+                                        <option value="">광주광역시</option>
+                                        <option value="">부산광역시</option>
+                                        <option value="">울산광역시</option>
+                                        <option value="">세종특별시</option>
+                                      
+                                        <option value="">경기도</option>
+                                        <option value="">강원도</option>
+                                        <option value="">충청북도</option>
+                                        <option value="">충청남도</option>
+                                        <option value="">전라북도</option>
+                                        <option value="">전라남도</option>
+                                        <option value="">경상북도</option>
+                                        <option value="">경상남도</option>
+                                        <option value="">제주도</option>
                                     </select>
                                 </div>
                                 <div class="select__option">
-                                    <select>
+                                    <select name="searchType2" id="searchType2">
+                                        <option selected>세부지역</option>
+                                        <option value="">세부지역</option>
+                                        <option value="">세부지역</option>
+                                        <option value="">세부지역</option>
+                                        <option value="">세부지역</option>
                                         <option value="">세부지역</option>
                                     </select>
                                 </div>
-                                <input type="text" placeholder="지역,식당 또는 음식">
-                                <button type="submit">검색</button>
+                                <input type="text" name="searchWord" id="searchWord" placeholder="검색어를 입력하세요.">
+                                <button type="button" id="btnSearch" onclick="goSearch()">검색</button>
                             </form>
+                            
+                            
                         </div>
                     </div>
                 </div>
