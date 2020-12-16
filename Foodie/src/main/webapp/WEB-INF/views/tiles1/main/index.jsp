@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
 	String ctxPath = request.getContextPath();
@@ -15,70 +15,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>3조 | 파이널</title>
-    
+
 </head>
 
 <style type="text/css">
+    body {
+        font-family: Verdana;
+    }
 
-body{
-	font-family: Verdana;
-}
-.top_list{
-/* == topList 스팬태그 가운데로 == */
-		 position: relative; 
-       /*  bottom: 90px;
+    .top_list {
+        /* == topList 스팬태그 가운데로 == */
+        position: relative;
+        /*  bottom: 90px;
         right:80px; */
-        color:white;
-        font-size:23px;
-        font-weight:bold;
-        text-align:center;
-       	float:right;
-       	
-}
-.top_list2{
-/* == topList 스팬태그 가운데로 == */
-         position: relative; 
-       /*  bottom: 90px;
-        right:78px; */
-        color:white;
-        font-size:17px;
-        font-weight:bold;
-        text-align:center;
-       	float:right;
-       	
-}
+        color: white;
+        font-size: 23px;
+        font-weight: bold;
+        text-align: center;
+        float: right;
 
-div.bright{
-	/* position:relative;
+    }
+
+    .top_list2 {
+        /* == topList 스팬태그 가운데로 == */
+        position: relative;
+        /*  bottom: 90px;
+        right:78px; */
+        color: white;
+        font-size: 17px;
+        font-weight: bold;
+        text-align: center;
+        float: right;
+
+    }
+
+    div.bright {
+        /* position:relative;
 	width:500px;
 	height:300px; */
-	/* filter:brightness(100%); */
-}
-div.set-bg{
-	/* position:relative; */
-	/* width:380px; */
-	/* filter:brightness(80%); */
-}
+        /* filter:brightness(100%); */
+    }
+
+    div.set-bg {
+        /* position:relative; */
+        /* width:380px; */
+        /* filter:brightness(80%); */
+    }
 
 </style>
 
 <script type="text/javascript">
+    $(document).ready(function() {
 
-   $(document).ready(function() {
-      
-      $("div.listing__item").click(function() {
-         
-         var index = $("div.listing__item").index(this);
-         
-         var hotPlace = $("span.top_list").eq(index).text();
-         
-         var hotPlaceInfo = $("span.top_list2").eq(index).text();
-         
-         location.href="<%=ctxPath %>/storeBoard/storeMain.food?hotPlace="+hotPlace+"hotPlaceInfo="+hotPlaceInfo;
-      });
-      
-   });
-   
+        $("div.listing__item").click(function() {
+
+            var index = $("div.listing__item").index(this);
+
+            var hotPlace = $("span.top_list").eq(index).text();
+
+            var hotPlaceInfo = $("span.top_list2").eq(index).text();
+
+            location.href = "<%=ctxPath %>/storeBoard/storeMain.food?hotPlace=" + hotPlace + "hotPlaceInfo=" + hotPlaceInfo;
+        });
+
+    });
+
 </script>
 
 <body>
@@ -132,7 +133,7 @@ div.set-bg{
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
                                     <span class="flaticon-032-food-truck"></span>
-                                    일식                
+                                    일식
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -150,348 +151,349 @@ div.set-bg{
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">
                                     <span class="flaticon-017-croissant"></span>
-                                   카페&제과                   
+                                    카페&제과
                                 </a>
                             </li>
-                            
+
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">
                                     <span class="flaticon-031-delivery"></span>
-                                   주점                   
+                                    주점
                                 </a>
                             </li>
                         </ul>
                     </div>
-                    
-                    
+
+
                     <!-- 지역핫플레이스 -->
                     <div class="tab-content">
-                    
-                        <div class="tab-pane active" id="tabs-1" role="tabpanel"> <!-- 지역핫플레이스 -->
-                        
+
+                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                            <!-- 지역핫플레이스 -->
+
                             <div class="row">
                                 <div class="col-lg-4 col-md-6">
                                     <div class="listing__item">
-                                    <%--  <a href="<%=ctxPath %>/list.food/sinnonhyun"> --%>
+                                        <%--  <a href="<%=ctxPath %>/list.food/sinnonhyun"> --%>
                                         <div class="listing__item__pic set-bg" data-setbg="<%=ctxPath %>/resources/img/listing/list-1.jpg">
-                                           <%--  <%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-1.png"> --%>
+                                            <%--  <%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-1.png"> --%>
                                             <div class="listing__item__pic__tag">Popular</div>
                                             <div class="listing__item__pic__btns">
-                                            <span class="top_list">신논현역 맛집 베스트</span>
-                                            <br><br>
-                                             <p class="top_list2">신논현의 맛집 모음</p>
-                                               <!--  <a href="#"><span class="icon_zoom-in_alt"></span></a>
+                                                <span class="top_list">신논현역 맛집 베스트</span>
+                                                <br><br>
+                                                <p class="top_list2">신논현의 맛집 모음</p>
+                                                <!--  <a href="#"><span class="icon_zoom-in_alt"></span></a>
                                                 <a href="#"><span class="icon_heart_alt"></span></a> -->
                                             </div>
                                         </div>
-                                     <!--  </a> --> 
+                                        <!--  </a> -->
                                     </div>
-                               </div>
+                                </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="listing__item">
-                                    <%-- <a href="<%=ctxPath %>/list.food/garosugil"> --%>
+                                        <%-- <a href="<%=ctxPath %>/list.food/garosugil"> --%>
                                         <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/fniqmkbao7_tgrue.png?fit=around|600:400&crop=600:400;*,*&output-format=jpg&output-quality=80">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
                                             <div class="listing__item__pic__tag top_rate">Top Rate</div>
                                             <div class="listing__item__pic__btns"><span class="top_list">가로수길 맛집 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">가로수길 처음와봐?</p>
-                                           </div>
-                                	    </div>
-                                	  <!--   </a> -->
-                                   </div>
-                               </div>
-                                    
-                                 <div class="col-lg-4 col-md-6">
-                                     <div class="listing__item">
-                                        <div class="listing__item__pic set-bg top_list_image" data-setbg="https://cdn.crowdpic.net/list-thumb/thumb_l_F3D127229BB327266846B663A87B0803.jpg">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
-                                             <div class="listing__item__pic__tag top_rate">Top Rate</div>
-                                            <div class="listing__item__pic__btns">
-                                            <span class="top_list">명동 맛집 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">명동이 요즘 핫하다던데..</p>
+                                                <br><br>
+                                                <p class="top_list2">가로수길 처음와봐?</p>
                                             </div>
-                                	    </div>
-                                   </div>
-                                 </div> 
-                                   
+                                        </div>
+                                        <!--   </a> -->
+                                    </div>
+                                </div>
+
                                 <div class="col-lg-4 col-md-6">
-                                     <div class="listing__item">
+                                    <div class="listing__item">
+                                        <div class="listing__item__pic set-bg top_list_image" data-setbg="https://cdn.crowdpic.net/list-thumb/thumb_l_F3D127229BB327266846B663A87B0803.jpg">
+
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+                                            <div class="listing__item__pic__tag top_rate">Top Rate</div>
+                                            <div class="listing__item__pic__btns">
+                                                <span class="top_list">명동 맛집 베스트</span>
+                                                <br><br>
+                                                <p class="top_list2">명동이 요즘 핫하다던데..</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="listing__item">
                                         <div class="listing__item__pic set-bg top_list_image" data-setbg="https://www.newzealand.com/assets/Tourism-NZ/Lake-Taupo/c47317b551/img-1536064442-8738-30473-p-11DB6F53-9C1F-12FB-64B569C5E02289AB-2544003__aWxvdmVrZWxseQo_CropResizeWzk0MCxudWxsLDgwLCJqcGciXQ.jpg">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
-                                             <div class="listing__item__pic__tag">Popular</div>
+
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+                                            <div class="listing__item__pic__tag">Popular</div>
                                             <div class="listing__item__pic__btns"><span class="top_list">이태원 맛집 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">이태원 클라쓰!!</p>
-                                           </div>
-                                	    </div>
-                                   </div>
-                                 </div> 
-                                 
-                                 
-                                 <div class="col-lg-4 col-md-6">
-                                     <div class="listing__item">
+                                                <br><br>
+                                                <p class="top_list2">이태원 클라쓰!!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="listing__item">
                                         <div class="listing__item__pic set-bg top_list_image" data-setbg="https://static.wtable.co.kr/image/production/service/recipe/668/6c59105b-1ea9-4e6d-bdd2-e5deafe499e3.jpg">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
-                                             <div class="listing__item__pic__tag">Popular</div>
+
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+                                            <div class="listing__item__pic__tag">Popular</div>
                                             <div class="listing__item__pic__btns"><span class="top_list">홍대 맛집 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">아직도 여기 모르는사람 있어?</p>
-                                           </div>
-                                	    </div>
-                                   </div>
-                                 </div> 
-                                 
-                                 
-                                  <div class="col-lg-4 col-md-6">
-                                     <div class="listing__item">
+                                                <br><br>
+                                                <p class="top_list2">아직도 여기 모르는사람 있어?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="listing__item">
                                         <div class="listing__item__pic set-bg top_list_image" data-setbg="https://t1.daumcdn.net/cfile/tistory/01384F4B516317E018">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
-                                             <div class="listing__item__pic__tag">Popular</div>
+
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+                                            <div class="listing__item__pic__tag">Popular</div>
                                             <div class="listing__item__pic__btns"><span class="top_list">강남역 맛집 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">강남의 핫한 맛집은?</p>
-                                           </div>
-                                	    </div>
-                                   </div>
-                                 </div> 
-                         </div>
-                         </div>
-                                 
-                                 
-                                 
-                                 
+                                                <br><br>
+                                                <p class="top_list2">강남의 핫한 맛집은?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
                         <!-- 한식 태그 -->
-                        
+
                         <div class="tab-pane" id="tabs-2" role="tabpanel">
                             <div class="row">
-                                 <div class="col-lg-4 col-md-6">
-                                     <div class="listing__item">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="listing__item">
                                         <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/59110_1607255618220385.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
-                                           <div class="listing__item__pic__tag hot_deal">Hot Deal</div>
-                                            <div class="listing__item__pic__btns"><span class="top_list">갈비 맛집 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">회식 할 곳 찾아?</p>
-                                           </div>
-                                	    </div>
-                                     </div>
-                                 </div> 
-                                
-                                
-                               <div class="col-lg-4 col-md-6">
-                                     <div class="listing__item">
-                                        <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/567494_1480569707297549.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
-                                           <div class="listing__item__pic__tag top_rate">Top Rate</div>
-                                            <div class="listing__item__pic__btns"><span class="top_list">삼겹살 맛집 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">삼쏘 한잔?</p>
-                                           </div>
-                                	    </div>
-                                     </div>
-                                 </div> 
-                                 
-                                 
-                               <div class="col-lg-4 col-md-6">
-                                     <div class="listing__item">
-                                        <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/447545_1471073424411761.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
-                                           <div class="listing__item__pic__tag">Popular</div>
-                                            <div class="listing__item__pic__btns"><span class="top_list">냉면 맛집 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">면치기 하고 싶은 날</p>
-                                           </div>
-                                	    </div>
-                                     </div>
-                                 </div> 
-                               
 
-								<div class="col-lg-4 col-md-6">
-                                     <div class="listing__item">
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+                                            <div class="listing__item__pic__tag hot_deal">Hot Deal</div>
+                                            <div class="listing__item__pic__btns"><span class="top_list">갈비 맛집 베스트</span>
+                                                <br><br>
+                                                <p class="top_list2">회식 할 곳 찾아?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="listing__item">
+                                        <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/567494_1480569707297549.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
+
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+                                            <div class="listing__item__pic__tag top_rate">Top Rate</div>
+                                            <div class="listing__item__pic__btns"><span class="top_list">삼겹살 맛집 베스트</span>
+                                                <br><br>
+                                                <p class="top_list2">삼쏘 한잔?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="listing__item">
+                                        <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/447545_1471073424411761.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
+
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+                                            <div class="listing__item__pic__tag">Popular</div>
+                                            <div class="listing__item__pic__btns"><span class="top_list">냉면 맛집 베스트</span>
+                                                <br><br>
+                                                <p class="top_list2">면치기 하고 싶은 날</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="listing__item">
                                         <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/37398/593070_1472836660192_7917?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
-                                           <div class="listing__item__pic__tag">Popular</div>
+
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+                                            <div class="listing__item__pic__tag">Popular</div>
                                             <div class="listing__item__pic__btns"><span class="top_list">국밥 맛집 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">든든한 국밥 먹을러 갈래요?</p>
-                                           </div>
-                                	    </div>
-                                     </div>
-                                 </div> 
-                                 
-                                 
-                                 
-                                 <div class="col-lg-4 col-md-6">
-                                     <div class="listing__item">
+                                                <br><br>
+                                                <p class="top_list2">든든한 국밥 먹을러 갈래요?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="listing__item">
                                         <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/1432016_1574946598893990.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
-                                           <div class="listing__item__pic__tag">Popular</div>
+
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+                                            <div class="listing__item__pic__tag">Popular</div>
                                             <div class="listing__item__pic__btns"><span class="top_list">부대찌개 맛집 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">겨울엔 역시 탕이지!</p>
-                                           </div>
-                                	    </div>
-                                     </div>
-                                 </div> 
-                                
-                                
-                                  <div class="col-lg-4 col-md-6">
-                                     <div class="listing__item">
+                                                <br><br>
+                                                <p class="top_list2">겨울엔 역시 탕이지!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="listing__item">
                                         <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/17625/134693_14352864734881447?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
                                             <div class="listing__item__pic__tag">Popular</div>
                                             <div class="listing__item__pic__btns"><span class="top_list">족발 맛집 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">족발 매니아들만 안다는 그 곳들</p>
-                                           </div>
-                                	    </div>
-                                   </div>
-                                 </div> 
-                        	 </div>
-                         </div>
-                                 
-                         <!-- 일식 -->
-                                 
+                                                <br><br>
+                                                <p class="top_list2">족발 매니아들만 안다는 그 곳들</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 일식 -->
+
                         <div class="tab-pane" id="tabs-3" role="tabpanel">
                             <div class="row">
                                 <div class="col-lg-4 col-md-6">
-                                     <div class="listing__item">
+                                    <div class="listing__item">
                                         <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/689979_1539971244122359.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
-                                             <div class="listing__item__pic__tag">Popular</div>
+
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+                                            <div class="listing__item__pic__tag">Popular</div>
                                             <div class="listing__item__pic__btns"><span class="top_list">스시 맛집 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">스시 매니아들이 자주 가는곳은?</p>
-                                           </div>
-                                	    </div>
-                                   </div>
-                                 </div> 
-                                 
-                                 
-                               <div class="col-lg-4 col-md-6">
-                                     <div class="listing__item">
-                                        <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/460278_1491386783474508.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
-                                             <div class="listing__item__pic__tag">Popular</div>
-                                            <div class="listing__item__pic__btns"><span class="top_list">라멘 맛집 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">진한 육수에 두툼한 차슈와 반숙 계란!</p>
-                                           </div>
-                                	    </div>
-                                   </div>
-                                 </div> 
-                                 
-                                 
+                                                <br><br>
+                                                <p class="top_list2">스시 매니아들이 자주 가는곳은?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                                 <div class="col-lg-4 col-md-6">
-                                     <div class="listing__item">
+                                    <div class="listing__item">
+                                        <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/460278_1491386783474508.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
+
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+                                            <div class="listing__item__pic__tag">Popular</div>
+                                            <div class="listing__item__pic__btns"><span class="top_list">라멘 맛집 베스트</span>
+                                                <br><br>
+                                                <p class="top_list2">진한 육수에 두툼한 차슈와 반숙 계란!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="listing__item">
                                         <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/970231_1607092393085012.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
-                                             <div class="listing__item__pic__tag top_rate">Top Rate</div>
+
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+                                            <div class="listing__item__pic__tag top_rate">Top Rate</div>
                                             <div class="listing__item__pic__btns"><span class="top_list">돈까스 맛집 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">이건 못참지!!</p>
-                                           </div>
-                                	    </div>
-                                   </div>
-                                 </div> 
-                                 
-                                 
-                               <div class="col-lg-4 col-md-6">
-                                     <div class="listing__item">
+                                                <br><br>
+                                                <p class="top_list2">이건 못참지!!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="listing__item">
                                         <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/1182605_1552197667841412.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
-                                             <div class="listing__item__pic__tag top_rate">Top Rate</div>
+
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+                                            <div class="listing__item__pic__tag top_rate">Top Rate</div>
                                             <div class="listing__item__pic__btns"><span class="top_list">이자카야 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">혼술하기 좋은 곳</p>
-                                           </div>
-                                	    </div>
-                                   </div>
-                                 </div> 
-                              </div>
-                              </div>
-                              
-                         
-                         
-                         
-                         
-                              
-                      <!-- 중식 -->     
-                                 
+                                                <br><br>
+                                                <p class="top_list2">혼술하기 좋은 곳</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <!-- 중식 -->
+
                         <div class="tab-pane" id="tabs-4" role="tabpanel">
                             <div class="row">
                                 <div class="col-lg-4 col-md-6">
-                                     <div class="listing__item">
+                                    <div class="listing__item">
                                         <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/467354_1518934950804567.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
-                                             <div class="listing__item__pic__tag top_rate">Top Rate</div>
+
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+                                            <div class="listing__item__pic__tag top_rate">Top Rate</div>
                                             <div class="listing__item__pic__btns"><span class="top_list">짬뽕 맛집 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">매콤한거 땡기는 날!</p>
-                                           </div>
-                                	    </div>
-                                   </div>
-                                 </div> 
-                                 
-                                 
-                                <div class="col-lg-4 col-md-6">
-                                     <div class="listing__item">
-                                        <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/984760_1559453236500092.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
-                                             <div class="listing__item__pic__tag top_rate">Top Rate</div>
-                                            <div class="listing__item__pic__btns"><span class="top_list">양고기&양꼬치 맛집 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">칭따오랑 같이 시키는게 국룰</p>
-                                           </div>
-                                	    </div>
-                                   </div>
-                                 </div> 
-                                 
-                                 
-                                <div class="col-lg-4 col-md-6">
-                                     <div class="listing__item">
-                                        <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/597979_1606890314035132.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
-                                        
-                                           <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
-                                             <div class="listing__item__pic__tag top_rate">Top Rate</div>
-                                            <div class="listing__item__pic__btns"><span class="top_list">마라탕 맛집 베스트</span>
-                                            <br><br>
-                                            <p class="top_list2">한번 빠지면 헤어나올 수 없는 이 중독성!</p>
-                                           </div>
-                                	    </div>
+                                                <br><br>
+                                                <p class="top_list2">매콤한거 땡기는 날!</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                 </div> 
-                                 
-                                 
-                                 
+                                </div>
+
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="listing__item">
+                                        <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/984760_1559453236500092.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
+
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+                                            <div class="listing__item__pic__tag top_rate">Top Rate</div>
+                                            <div class="listing__item__pic__btns"><span class="top_list">양고기&양꼬치 맛집 베스트</span>
+                                                <br><br>
+                                                <p class="top_list2">칭따오랑 같이 시키는게 국룰</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="listing__item">
+                                        <div class="listing__item__pic set-bg top_list_image" data-setbg="https://mp-seoul-image-production-s3.mangoplate.com/597979_1606890314035132.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80">
+
+                                            <!--  <img src="resources/images/listing/list_icon-1.png" alt=""> -->
+                                            <div class="listing__item__pic__tag top_rate">Top Rate</div>
+                                            <div class="listing__item__pic__btns"><span class="top_list">마라탕 맛집 베스트</span>
+                                                <br><br>
+                                                <p class="top_list2">한번 빠지면 헤어나올 수 없는 이 중독성!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
                                 <div class="col-lg-4 col-md-6">
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="<%=ctxPath %>/resources/img/listing/list-6.jpg">
-                                            <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-6.png" alt="">
-                                            <div class="listing__item__pic__tag">Popular</div>
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
+                                            <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-6.png" alt="">
+                                                <div class="listing__item__pic__tag">Popular</div>
+                                                <div class="listing__item__pic__btns">
+                                                    <a href="#"><span class="icon_zoom-in_alt"></span></a>
+                                                    <a href="#"><span class="icon_heart_alt"></span></a>
+                                                </div>
                                         </div>
                                         <div class="listing__item__text">
                                             <div class="listing__item__text__inside">
@@ -514,8 +516,8 @@ div.set-bg{
                                             </div>
                                             <div class="listing__item__text__info">
                                                 <div class="listing__item__text__info__left">
-                                                    <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-3.png" alt="">
-                                                    <span>Hotel</span>
+                                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-3.png" alt="">
+                                                        <span>Hotel</span>
                                                 </div>
                                                 <div class="listing__item__text__info__right">Open Now</div>
                                             </div>
@@ -529,12 +531,12 @@ div.set-bg{
                                 <div class="col-lg-4 col-md-6">
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="<%=ctxPath %>/resources/img/listing/list-1.jpg">
-                                            <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-1.png" alt="">
-                                            <div class="listing__item__pic__tag">Popular</div>
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
+                                            <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-1.png" alt="">
+                                                <div class="listing__item__pic__tag">Popular</div>
+                                                <div class="listing__item__pic__btns">
+                                                    <a href="#"><span class="icon_zoom-in_alt"></span></a>
+                                                    <a href="#"><span class="icon_heart_alt"></span></a>
+                                                </div>
                                         </div>
                                         <div class="listing__item__text">
                                             <div class="listing__item__text__inside">
@@ -557,8 +559,8 @@ div.set-bg{
                                             </div>
                                             <div class="listing__item__text__info">
                                                 <div class="listing__item__text__info__left">
-                                                    <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-1.png" alt="">
-                                                    <span>Restaurant</span>
+                                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-1.png" alt="">
+                                                        <span>Restaurant</span>
                                                 </div>
                                                 <div class="listing__item__text__info__right">Open Now</div>
                                             </div>
@@ -568,12 +570,12 @@ div.set-bg{
                                 <div class="col-lg-4 col-md-6">
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="<%=ctxPath %>/resources/img/listing/list-2.jpg">
-                                            <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-2.png" alt="">
-                                            <div class="listing__item__pic__tag top_rate">Top Rate</div>
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
+                                            <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-2.png" alt="">
+                                                <div class="listing__item__pic__tag top_rate">Top Rate</div>
+                                                <div class="listing__item__pic__btns">
+                                                    <a href="#"><span class="icon_zoom-in_alt"></span></a>
+                                                    <a href="#"><span class="icon_heart_alt"></span></a>
+                                                </div>
                                         </div>
                                         <div class="listing__item__text">
                                             <div class="listing__item__text__inside">
@@ -596,8 +598,8 @@ div.set-bg{
                                             </div>
                                             <div class="listing__item__text__info">
                                                 <div class="listing__item__text__info__left">
-                                                    <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-2.png" alt="">
-                                                    <span>Food & Drink</span>
+                                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-2.png" alt="">
+                                                        <span>Food & Drink</span>
                                                 </div>
                                                 <div class="listing__item__text__info__right closed">Closed</div>
                                             </div>
@@ -607,12 +609,12 @@ div.set-bg{
                                 <div class="col-lg-4 col-md-6">
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="<%=ctxPath %>/resources/img/listing/list-3.jpg">
-                                            <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-3.png" alt="">
-                                            <div class="listing__item__pic__tag">Popular</div>
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
+                                            <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-3.png" alt="">
+                                                <div class="listing__item__pic__tag">Popular</div>
+                                                <div class="listing__item__pic__btns">
+                                                    <a href="#"><span class="icon_zoom-in_alt"></span></a>
+                                                    <a href="#"><span class="icon_heart_alt"></span></a>
+                                                </div>
                                         </div>
                                         <div class="listing__item__text">
                                             <div class="listing__item__text__inside">
@@ -635,8 +637,8 @@ div.set-bg{
                                             </div>
                                             <div class="listing__item__text__info">
                                                 <div class="listing__item__text__info__left">
-                                                    <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-1.png" alt="">
-                                                    <span>Restaurant</span>
+                                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-1.png" alt="">
+                                                        <span>Restaurant</span>
                                                 </div>
                                                 <div class="listing__item__text__info__right">Open Now</div>
                                             </div>
@@ -646,12 +648,12 @@ div.set-bg{
                                 <div class="col-lg-4 col-md-6">
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="<%=ctxPath %>/resources/img/listing/list-4.jpg">
-                                            <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-4.png" alt="">
-                                            <div class="listing__item__pic__tag">Popular</div>
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
+                                            <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-4.png" alt="">
+                                                <div class="listing__item__pic__tag">Popular</div>
+                                                <div class="listing__item__pic__btns">
+                                                    <a href="#"><span class="icon_zoom-in_alt"></span></a>
+                                                    <a href="#"><span class="icon_heart_alt"></span></a>
+                                                </div>
                                         </div>
                                         <div class="listing__item__text">
                                             <div class="listing__item__text__inside">
@@ -674,8 +676,8 @@ div.set-bg{
                                             </div>
                                             <div class="listing__item__text__info">
                                                 <div class="listing__item__text__info__left">
-                                                    <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-3.png" alt="">
-                                                    <span>Hotel</span>
+                                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-3.png" alt="">
+                                                        <span>Hotel</span>
                                                 </div>
                                                 <div class="listing__item__text__info__right closed">Closed</div>
                                             </div>
@@ -685,12 +687,12 @@ div.set-bg{
                                 <div class="col-lg-4 col-md-6">
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="<%=ctxPath %>/resources/img/listing/list-6.jpg">
-                                            <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-6.png" alt="">
-                                            <div class="listing__item__pic__tag">Popular</div>
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
+                                            <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-6.png" alt="">
+                                                <div class="listing__item__pic__tag">Popular</div>
+                                                <div class="listing__item__pic__btns">
+                                                    <a href="#"><span class="icon_zoom-in_alt"></span></a>
+                                                    <a href="#"><span class="icon_heart_alt"></span></a>
+                                                </div>
                                         </div>
                                         <div class="listing__item__text">
                                             <div class="listing__item__text__inside">
@@ -713,8 +715,8 @@ div.set-bg{
                                             </div>
                                             <div class="listing__item__text__info">
                                                 <div class="listing__item__text__info__left">
-                                                    <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-3.png" alt="">
-                                                    <span>Hotel</span>
+                                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-3.png" alt="">
+                                                        <span>Hotel</span>
                                                 </div>
                                                 <div class="listing__item__text__info__right">Open Now</div>
                                             </div>
@@ -728,12 +730,12 @@ div.set-bg{
                                 <div class="col-lg-4 col-md-6">
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="<%=ctxPath %>/resources/img/listing/list-1.jpg">
-                                            <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-1.png" alt="">
-                                            <div class="listing__item__pic__tag">Popular</div>
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
+                                            <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-1.png" alt="">
+                                                <div class="listing__item__pic__tag">Popular</div>
+                                                <div class="listing__item__pic__btns">
+                                                    <a href="#"><span class="icon_zoom-in_alt"></span></a>
+                                                    <a href="#"><span class="icon_heart_alt"></span></a>
+                                                </div>
                                         </div>
                                         <div class="listing__item__text">
                                             <div class="listing__item__text__inside">
@@ -756,8 +758,8 @@ div.set-bg{
                                             </div>
                                             <div class="listing__item__text__info">
                                                 <div class="listing__item__text__info__left">
-                                                    <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-1.png" alt="">
-                                                    <span>Restaurant</span>
+                                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-1.png" alt="">
+                                                        <span>Restaurant</span>
                                                 </div>
                                                 <div class="listing__item__text__info__right">Open Now</div>
                                             </div>
@@ -767,12 +769,12 @@ div.set-bg{
                                 <div class="col-lg-4 col-md-6">
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="<%=ctxPath %>/resources/img/listing/list-2.jpg">
-                                            <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-2.png" alt="">
-                                            <div class="listing__item__pic__tag top_rate">Top Rate</div>
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
+                                            <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-2.png" alt="">
+                                                <div class="listing__item__pic__tag top_rate">Top Rate</div>
+                                                <div class="listing__item__pic__btns">
+                                                    <a href="#"><span class="icon_zoom-in_alt"></span></a>
+                                                    <a href="#"><span class="icon_heart_alt"></span></a>
+                                                </div>
                                         </div>
                                         <div class="listing__item__text">
                                             <div class="listing__item__text__inside">
@@ -795,8 +797,8 @@ div.set-bg{
                                             </div>
                                             <div class="listing__item__text__info">
                                                 <div class="listing__item__text__info__left">
-                                                    <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-2.png" alt="">
-                                                    <span>Food & Drink</span>
+                                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-2.png" alt="">
+                                                        <span>Food & Drink</span>
                                                 </div>
                                                 <div class="listing__item__text__info__right closed">Closed</div>
                                             </div>
@@ -806,12 +808,12 @@ div.set-bg{
                                 <div class="col-lg-4 col-md-6">
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="<%=ctxPath %>/resources/img/listing/list-4.jpg">
-                                            <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-4.png" alt="">
-                                            <div class="listing__item__pic__tag">Popular</div>
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
+                                            <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-4.png" alt="">
+                                                <div class="listing__item__pic__tag">Popular</div>
+                                                <div class="listing__item__pic__btns">
+                                                    <a href="#"><span class="icon_zoom-in_alt"></span></a>
+                                                    <a href="#"><span class="icon_heart_alt"></span></a>
+                                                </div>
                                         </div>
                                         <div class="listing__item__text">
                                             <div class="listing__item__text__inside">
@@ -834,8 +836,8 @@ div.set-bg{
                                             </div>
                                             <div class="listing__item__text__info">
                                                 <div class="listing__item__text__info__left">
-                                                    <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-3.png" alt="">
-                                                    <span>Hotel</span>
+                                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-3.png" alt="">
+                                                        <span>Hotel</span>
                                                 </div>
                                                 <div class="listing__item__text__info__right closed">Closed</div>
                                             </div>
@@ -845,12 +847,12 @@ div.set-bg{
                                 <div class="col-lg-4 col-md-6">
                                     <div class="listing__item">
                                         <div class="listing__item__pic set-bg" data-setbg="<%=ctxPath %>/resources/img/listing/list-5.jpg">
-                                            <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-5.png" alt="">
-                                            <div class="listing__item__pic__tag hot_deal">Hot Deal</div>
-                                            <div class="listing__item__pic__btns">
-                                                <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                                                <a href="#"><span class="icon_heart_alt"></span></a>
-                                            </div>
+                                            <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_icon-5.png" alt="">
+                                                <div class="listing__item__pic__tag hot_deal">Hot Deal</div>
+                                                <div class="listing__item__pic__btns">
+                                                    <a href="#"><span class="icon_zoom-in_alt"></span></a>
+                                                    <a href="#"><span class="icon_heart_alt"></span></a>
+                                                </div>
                                         </div>
                                         <div class="listing__item__text">
                                             <div class="listing__item__text__inside">
@@ -873,8 +875,8 @@ div.set-bg{
                                             </div>
                                             <div class="listing__item__text__info">
                                                 <div class="listing__item__text__info__left">
-                                                    <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-4.png" alt="">
-                                                    <span>Shopping</span>
+                                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/listing/list_small_icon-4.png" alt="">
+                                                        <span>Shopping</span>
                                                 </div>
                                                 <div class="listing__item__text__info__right">Open Now</div>
                                             </div>
@@ -906,31 +908,31 @@ div.set-bg{
                     <div class="work__item">
                         <div class="work__item__number">01.</div> 
                         <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/work/work-1.png" alt="">
-                        <h5>Location & Categories</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="work__item">
-                        <div class="work__item__number">02.</div>
-                        <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/work/work-2.png" alt="">
-                        <h5>Explore Listting</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="work__item">
-                        <div class="work__item__number">03.</div>
-                        <<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/work/work-3.png" alt="">
-                        <h5>Making Appointments</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore.</p>
-                    </div>
-                </div>
-            </div>
+    <h5>Location & Categories</h5>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore.</p>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="work__item">
+            <div class="work__item__number">02.</div>
+            <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/work/work-2.png" alt="">
+                <h5>Explore Listting</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore.</p>
         </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="work__item">
+            <div class="work__item__number">03.</div>
+            <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/work/work-3.png" alt="">
+                <h5>Making Appointments</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore.</p>
+        </div>
+    </div>
+    </div>
+    </div>
     </section> --%>
     <!-- Work Section End -->
 
@@ -940,20 +942,19 @@ div.set-bg{
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                         <h2 style="color:orange; font-weight:bold;">HOT Place!</h2>
+                        <h2 style="color:orange; font-weight:bold;">HOT Place!</h2>
                         <p>Foodie의 핫한 맛집을 한눈에!</p>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                
-                    <a href="#" class="feature__location__item large-item set-bg"
-                        data-setbg="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20201102_158%2F1604294742012rFPrl_JPEG%2Fimage.jpg">
+
+                    <a href="#" class="feature__location__item large-item set-bg" data-setbg="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20201102_158%2F1604294742012rFPrl_JPEG%2Fimage.jpg">
                         <div class="feature__location__item__text">
                             <h5>명동</h5>
                             <ul>
-                                
+
                             </ul>
                         </div>
                     </a>
@@ -961,16 +962,14 @@ div.set-bg{
                 <div class="col-lg-6">
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
-                            <a href="#" class="feature__location__item set-bg"
-                                data-setbg="https://www.dtnews24.com/news/photo/201702/93893_415758.jpg">
+                            <a href="#" class="feature__location__item set-bg" data-setbg="https://www.dtnews24.com/news/photo/201702/93893_415758.jpg">
                                 <div class="feature__location__item__text">
                                     <h5>홍대</h5>
                                 </div>
                             </a>
                         </div>
                         <div class="col-lg-6 col-md-6">
-                            <a href="#" class="feature__location__item set-bg"
-                                data-setbg="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20201127_81%2F16064055842862fB4C_JPEG%2Fupload_b06014bb7e5c18e6cff67a5476d19e21.jpeg">
+                            <a href="#" class="feature__location__item set-bg" data-setbg="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20201127_81%2F16064055842862fB4C_JPEG%2Fupload_b06014bb7e5c18e6cff67a5476d19e21.jpeg">
                                 <div class="feature__location__item__text">
                                     <h5>이태원</h5>
                                 </div>
@@ -1001,9 +1000,15 @@ div.set-bg{
                         <div class="testimonial__item" data-hash="review-1">
                             <p>" 맛집입니다 강추!"</p>
                             <div class="testimonial__item__author">
-                                <a href="#review-3"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/testimonial/author-3.png" alt=""></a>
-                                <a href="#review-1" class="active"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/testimonial/author-1.png" alt=""></a>
-                                <a href="#review-2"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/testimonial/author-2.png" alt=""></a>
+                                <a href="#review-3">
+                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/testimonial/author-3.png" alt="">
+                                </a>
+                                <a href="#review-1" class="active">
+                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/testimonial/author-1.png" alt="">
+                                </a>
+                                <a href="#review-2">
+                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/testimonial/author-2.png" alt="">
+                                </a>
                             </div>
                             <div class="testimonial__item__author__text">
                                 <h5>임정섭 -</h5>
@@ -1015,14 +1020,20 @@ div.set-bg{
                                     <i class="fa fa-star"></i>
                                 </div>
                             </div>
-                           <!--  <span>CEO Colorlib</span> -->
+                            <!--  <span>CEO Colorlib</span> -->
                         </div>
                         <div class="testimonial__item" data-hash="review-2">
                             <p>"여기 맛있어요!!"</p>
                             <div class="testimonial__item__author">
-                                <a href="#review-1"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/testimonial/author-1.png" alt=""></a>
-                                <a href="#review-2" class="active"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/testimonial/author-2.png" alt=""></a>
-                                <a href="#review-3"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/testimonial/author-3.png" alt=""></a>
+                                <a href="#review-1">
+                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/testimonial/author-1.png" alt="">
+                                </a>
+                                <a href="#review-2" class="active">
+                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/testimonial/author-2.png" alt="">
+                                </a>
+                                <a href="#review-3">
+                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/testimonial/author-3.png" alt="">
+                                </a>
                             </div>
                             <div class="testimonial__item__author__text">
                                 <h5>황주호 -</h5>
@@ -1039,9 +1050,15 @@ div.set-bg{
                         <div class="testimonial__item" data-hash="review-3">
                             <p>"제가 먹은것중에 제일 맛있어요"</p>
                             <div class="testimonial__item__author">
-                                <a href="#review-2"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/testimonial/author-2.png" alt=""></a>
-                                <a href="#review-3" class="active"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/testimonial/author-3.png" alt=""></a>
-                                <a href="#review-1"><<%=ctxPath %>/resources/img src="<%=ctxPath %>/resources/img/testimonial/author-1.png" alt=""></a>
+                                <a href="#review-2">
+                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/testimonial/author-2.png" alt="">
+                                </a>
+                                <a href="#review-3" class="active">
+                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/testimonial/author-3.png" alt="">
+                                </a>
+                                <a href="#review-1">
+                                    <<%=ctxPath %> /resources/img src="<%=ctxPath %>/resources/img/testimonial/author-1.png" alt="">
+                                </a>
                             </div>
                             <div class="testimonial__item__author__text">
                                 <h5>홍승의 -</h5>
@@ -1060,11 +1077,11 @@ div.set-bg{
             </div>
         </div>
     </section>
-    
- 
 
 
-   
+
+
+
     <!-- Js Plugins -->
     <script src="<%=ctxPath %>/resources/js/jquery-3.3.1.min.js"></script>
     <script src="<%=ctxPath %>/resources/js/bootstrap.min.js"></script>
@@ -1077,4 +1094,3 @@ div.set-bg{
     <script src="<%=ctxPath %>/resources/js/owl.carousel.min.js"></script>
     <script src="<%=ctxPath %>/resources/js/main.js"></script>
 </body>
-
