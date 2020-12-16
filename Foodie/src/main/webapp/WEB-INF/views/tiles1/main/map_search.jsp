@@ -359,6 +359,7 @@
             
             // console log start
             
+            console.log(places.id);
             console.log(places.place_name);
             console.log(places.road_address_name);
             

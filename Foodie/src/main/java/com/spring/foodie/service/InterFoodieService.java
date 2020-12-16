@@ -7,14 +7,11 @@ import com.spring.foodie.model.SearchVO;
 
 public interface InterFoodieService {
 
-	//검색하기
-	List<SearchVO> searchList(Map<String, String> paraMap);
+  // 검색하기
+  List<SearchVO> searchList(Map<String, String> paraMap);
 
-	
+
+
 }
-
-
-
-
 
 
