@@ -9,9 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.spring.foodie.common.*;
 import com.spring.foodie.model.SearchVO;
 import com.spring.foodie.service.*;
@@ -110,6 +114,29 @@ public class FoodieController {
   }
 
 
+  // JSON Print
+  @CrossOrigin
+  @RequestMapping(value = "/map/data.food")
+  public ModelAndView map_data(HttpServletRequest request, ModelAndView mav) {
+    mav.setViewName("main/map_list.tiles1");
+    return mav;
+  }
+
+  // JSON Print
+  @CrossOrigin
+  @ResponseBody
+  @RequestMapping(value = "/get/json.food", produces = "text/plain;charset=UTF-8")
+  public String getJson() {
+
+    String kakao = "https://place.map.kakao.com/main/v/";
+    String id = "290249009";
+    String myURL = kakao + id;
+
+    Object json = JsonReader.callURL(myURL);
+    System.out.println("controller json : " + json);
+    
+    return json.toString();
+  }
 
 
 

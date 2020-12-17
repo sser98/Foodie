@@ -357,13 +357,23 @@
             el.innerHTML = itemStr;
             el.className = 'item';
             
-            // console log start
-            
+         // console start
+            console.log("");
+            console.log("start");
+            console.log(places.address_name);
+            console.log(places.category_group_code);
+            console.log(places.category_group_name);
+            console.log(places.distance);
             console.log(places.id);
+            console.log(places.phone);
             console.log(places.place_name);
+            console.log(places.place_url);
             console.log(places.road_address_name);
-            
-            // console log end
+            console.log(places.x);
+            console.log(places.y);
+            console.log("end");
+            console.log("");
+            // console end
 
             return el;
         }
@@ -445,6 +455,10 @@
         }
 
     </script>
+    
+    <form name="searchFrm">
+    form test
+    </form>
 </body>
 
 </html>
