@@ -7,10 +7,12 @@
 <mapper namespace="foodie">
 
 	<select id="storeList" resultType="com.spring.foodie.model.SearchVO" parameterType="HashMap">
-	SELECT ROWNUM, STORE.CODE, STORE.TYPE, STORE.OPEN_STATUS, STORE.HYGINE,
-	STORE.NAME, STORE.CALL,
+	SELECT RNO, CODE, NAME, CALL, POSTCODE, ADDRESS, OPEN_STATUS, HYGINE
+    from
+    (
+    SELECT ROWNUM as rno , STORE.CODE, STORE.NAME, STORE.CALL,
 	NVL(STORE.POSTCODE_NEW, STORE.POSTCODE_OLD) AS POSTCODE, NVL(STORE.ADDR_NEW, STORE.ADDR_OLD)
-	AS ADDRESS
+	AS ADDRESS, STORE.OPEN_STATUS, STORE.HYGINE
 	FROM ( SELECT CODE, DIST_CODE, OPEN_STATUS, STATUS_DETAIL, CALL,
 	POSTCODE_OLD, ADDR_OLD, POSTCODE_NEW, ADDR_NEW,
 	NAME, BUSINESS_TYPE, COORDINATES_X, COORDINATES_Y, HYGIENE_TYPE AS HYGINE,
@@ -21,8 +23,9 @@
 	POSTCODE_OLD) ASC) STORE
 	WHERE LOWER(REPLACE(TRIM(STORE.SEARCH_ALL), ' ', ''))
 	LIKE LOWER(REPLACE(TRIM('%'||#{place}||'%'), ' ', '%'))
-	AND ROWNUM BETWEEN #{scrollCtrl}*20-19  AND #{scrollCtrl}*20
 	ORDER BY ROWNUM ASC
+    )result
+    where result.rno between #{scrollCtrl}*20-19 and #{scrollCtrl}*20
 	</select>
 	
 	<select id="getStoreDetail" parameterType="String" resultType="com.spring.foodie.model.SearchVO">
@@ -37,6 +40,37 @@
 	FROM STORE_KOREA WHERE STATUS_DETAIL = '영업') STORE
 	WHERE STORE.code = #{code}
 	</select>
+	
+	<resultMap type="HashMap" id="moreViewresultMap">
+		<result property="RNO" column="RNO" javaType="String" />
+		<result property="NAME" column="NAME" javaType="String" />
+		<result property="CALL" column="CALL" javaType="String" />
+		<result property="ADDRESS" column="ADDRESS" javaType="String" />
+		<result property="CODE" column="CODE" javaType="String" />
+	</resultMap>
+	
+	<select id="moreView" resultMap="moreViewresultMap" parameterType="HashMap">
+	SELECT RNO, CODE, NAME, CALL, POSTCODE, ADDRESS
+    from
+    (
+    SELECT ROWNUM as RNO , STORE.CODE, STORE.NAME, STORE.CALL,
+	NVL(STORE.POSTCODE_NEW, STORE.POSTCODE_OLD) AS POSTCODE, NVL(STORE.ADDR_NEW, STORE.ADDR_OLD)
+	AS ADDRESS
+	FROM ( SELECT CODE, DIST_CODE, OPEN_STATUS, STATUS_DETAIL, CALL,
+	POSTCODE_OLD, ADDR_OLD, POSTCODE_NEW, ADDR_NEW,
+	NAME, BUSINESS_TYPE, COORDINATES_X, COORDINATES_Y, HYGIENE_TYPE AS HYGINE,
+	BUSINESS_TYPE AS BUSINESS, TYPE,
+	NAME || ADDR_OLD || ADDR_NEW || HYGIENE_TYPE || BUSINESS_TYPE || NAME ||
+	ADDR_OLD || ADDR_NEW || HYGIENE_TYPE || BUSINESS_TYPE AS SEARCH_ALL
+	FROM STORE_KOREA WHERE STATUS_DETAIL = '영업' ORDER BY NVL(POSTCODE_NEW,
+	POSTCODE_OLD) ASC) STORE
+	WHERE LOWER(REPLACE(TRIM(STORE.SEARCH_ALL), ' ', ''))
+	LIKE LOWER(REPLACE(TRIM('%'||#{place}||'%'), ' ', '%'))
+	ORDER BY ROWNUM ASC
+    )result
+    where result.rno between #{scrollCtrl}*20-19 and #{scrollCtrl}*20
+	</select>
+	
 
 </mapper>
 

@@ -1,6 +1,7 @@
 package com.spring.foodie.model;
 
 
+import java.awt.Stroke;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,6 +58,18 @@ public class FoodieDAO implements InterFoodieDAO {
 		SearchVO svo = sqlsession.selectOne("foodie.getStoreDetail", code);
 		
 		return svo;
+	}
+
+	@Override
+	public List<Map<String,String>> moreView(String place, String scrollCtrl) {
+		
+		Map<String,String> paraMap = new HashMap<String,String>();
+		paraMap.put("place", place);
+		paraMap.put("scrollCtrl", scrollCtrl);
+
+		List<Map<String, String>> storeList = sqlsession.selectList("foodie.moreView",paraMap);
+	
+		return storeList;
 	}
 	
 	

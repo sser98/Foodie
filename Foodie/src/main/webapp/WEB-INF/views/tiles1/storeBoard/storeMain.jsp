@@ -24,18 +24,6 @@
 <script>
 	$(document).ready(function() {
 		
-		$("div.store_item").click(function() {
-			
-			var index = $("div.store_item").index(this);
-			
-			var code = $("input:hidden[name=code]").eq(index).val();
-			
-			var frm = document.storeListForm;
-			frm.method="GET";
-			frm.action="<%=ctxPath%>/storeBoard/storeDetail.food?code="+code;
-			frm.submit();
-		});
-		
 	});
 	
 	 $(window).scroll(function() {
@@ -46,6 +34,23 @@
 	        moreList();
 	    }
 	 });
+	 
+	 function storeClick() {
+		
+		$("div.store_item").click(function() {
+			var index = $("div.store_item").index(this);
+			
+			var code = $("input.code").eq(index).val();
+			
+			alert(code);
+				
+			var frm = document.storeListForm;
+			frm.method="GET";
+			frm.action="<%=ctxPath%>/storeBoard/storeDetail.food?code="+code;
+			frm.submit();
+		});
+		
+	 }
 	    
 	 function moreList() {
 		var scrollCtrl = $("#scrollCtrl").val();
@@ -63,29 +68,27 @@
 		$.ajax({
 				url:"<%=ctxPath%>/storeBoard/moreView.food",
 				data: urlContent,
-				dataTyep:"JSON",
+				dataType:"JSON",
 				success:function(json){
-					
-					console.log(json);
-					
 					for(var i=0; i<json.length; i++) {
 						html += "<div class='store nice-scroll' align='center'>" +
 					        	 	"<div class='store__list'>" +
-					            		"<div class='store_item' style='cursor: pointer;'>" +
+					            		"<div class='store_item' style='cursor: pointer;' onclick='storeClick()'>" +
 						               	 	"<div class='store_item_img' style='display: inline-block;'>" +
 						                    "<img src='<%=ctxPath %>/resources/images/레노보.png'>" +
 						                	"</div>" +
 						                	"<div class='store__item__text' style='display: inline-block;'>" +
-						                    "<div><h4>" + json[i].rownum +". "+ json[i].name + "</h4></div>" +
-						                    "<div><h5>" + json[i].address + "</h5></div>" +
-						                    "<div><h5>" + json[i].call +"</h5></div>" +
-						                    "<input type='hidden' value=" + json[i].code +" name='code' />" +
-						                    "<div align='right'>" + json[i].name  + " 더보기 </div>" +
+						                    "<div><h4>" + json[i].RNO +". "+ json[i].NAME + "</h4></div>" +
+						                    "<div><h5>" + json[i].ADDRESS + "</h5></div>" +
+						                    "<div><h5>" + json[i].CALL +"</h5></div>" +
+						                    "<input type='text' value=" + json[i].CODE +" name='code' class='code' />" +
+						                    "<div align='right'>" + json[i].NAME  + " 더보기 </div>" +
 								            "</div>" +
 							            "</div>" +
 						        	"</div>" +
-					    		"</div>";
+					    		"</div></br>";
 					}
+					$("div#storeList").append(html);
 				},
 				error: function(request, status, error){
 					alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
@@ -113,7 +116,7 @@
 			    <!-- Listing Section Begin -->
 			    <div class="store nice-scroll" align="center">
 			        <div class="store__list">
-			            <div class="store_item" style="cursor: pointer;">
+			            <div class="store_item" style="cursor: pointer;" onclick="storeClick()">
 			                <div class="store_item_img" style="display: inline-block;">
 			                    <img src="<%=ctxPath %>/resources/images/레노보.png">
 			                </div>
@@ -122,7 +125,7 @@
 			                    <div><h4>${status.index + 1}. ${store.name}</h4></div>
 			                    <div><h5>${store.address}</h5></div>
 			                    <div><h5>${store.call}</h5></div>
-			                    <input type="hidden" value="${store.code}" name="code" />
+			                    <input type="text" value="${store.code}" name="code" class="code"/>
 			                    <div align="right">${store.name} 더보기</div>
 			                </div>
 			            </div>

@@ -1,6 +1,7 @@
 package com.spring.foodie.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,6 +43,14 @@ public class FoodieService implements InterFoodieService {
 		SearchVO svo = dao.getStoreDetail(code);
 		
 		return svo;
+	}
+
+	@Override
+	public List<Map<String, String>> moreView(String place, String scrollCtrl) {
+		
+		List<Map<String,String>> storeList = dao.moreView(place,scrollCtrl);
+		
+		return storeList;
 	}
 
 	

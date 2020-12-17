@@ -76,18 +76,21 @@ public class FoodieController {
 		
 		String Place = hotPlace.substring(0, hotPlace.indexOf(target));
 		
-		List<SearchVO> storeList = service.getStoreList(Place,scrollCtrl);
-		
+		List<Map<String,String>> storeList = service.moreView(Place,scrollCtrl);
+
 		JSONArray jsonArr = new JSONArray();
 		
-		for(SearchVO svo : storeList) {
-			
+		for (Map<String, String> svo : storeList) {
 			JSONObject jsonObj = new JSONObject();
-			jsonObj.put("svo", svo);
-			
-			jsonArr.put(svo);
+			jsonObj.put("RNO", svo.get("RNO"));
+			jsonObj.put("NAME", svo.get("NAME"));
+			jsonObj.put("CALL", svo.get("CALL"));
+			jsonObj.put("ADDRESS", svo.get("ADDRESS"));
+			jsonObj.put("CODE", svo.get("CODE"));
+
+			jsonArr.put(jsonObj);
 		}
-		
+		 
 		String json = jsonArr.toString();
 		
 		System.out.println(json);
