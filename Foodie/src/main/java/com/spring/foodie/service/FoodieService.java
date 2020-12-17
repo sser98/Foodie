@@ -31,8 +31,8 @@ public class FoodieService implements InterFoodieService {
     // 그러므로 dao 는 null 이 아니다.
 
 	@Override
-	public List<SearchVO> getStoreList(String place) {
-		List<SearchVO> storeList = dao.getStoreList(place);
+	public List<SearchVO> getStoreList(String place, String scrollCtrl) {
+		List<SearchVO> storeList = dao.getStoreList(place, scrollCtrl);
 		return storeList;
 	}
 

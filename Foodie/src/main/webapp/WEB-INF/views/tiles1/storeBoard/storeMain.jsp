@@ -28,52 +28,111 @@
 			
 			var index = $("div.store_item").index(this);
 			
+			var code = $("input:hidden[name=code]").eq(index).val();
+			
 			var frm = document.storeListForm;
-			frm.method="POST";
-			frm.action="<%=ctxPath%>/storeBoard/storeDetail.food";
+			frm.method="GET";
+			frm.action="<%=ctxPath%>/storeBoard/storeDetail.food?code="+code;
 			frm.submit();
 		});
 		
 	});
+	
+	 $(window).scroll(function() {
+	        var scrolltop = $(document).scrollTop();
+	        var height = $(document).height();
+	        var height_win = $(window).height();
+	     if (Math.round( $(window).scrollTop()) == $(document).height() - $(window).height()) {
+	        moreList();
+	    }
+	 });
+	    
+	 function moreList() {
+		var scrollCtrl = $("#scrollCtrl").val();
+		var hotPlace = "${hotPlace}";
+		var hotPlaceInfo = "${hotPlaceInfo}";
+		
+		var nscrollCtrl = Number(scrollCtrl) + 1;
+		
+		var html = "";
+		
+		$("#scrollCtrl").val(nscrollCtrl);
+		
+		var urlContent = {"hotPlace":hotPlace, "hotPlaceInfo":hotPlaceInfo, "nscrollCtrl":nscrollCtrl};
+		
+		$.ajax({
+				url:"<%=ctxPath%>/storeBoard/moreView.food",
+				data: urlContent,
+				dataTyep:"JSON",
+				success:function(json){
+					
+					console.log(json);
+					
+					for(var i=0; i<json.length; i++) {
+						html += "<div class='store nice-scroll' align='center'>" +
+					        	 	"<div class='store__list'>" +
+					            		"<div class='store_item' style='cursor: pointer;'>" +
+						               	 	"<div class='store_item_img' style='display: inline-block;'>" +
+						                    "<img src='<%=ctxPath %>/resources/images/레노보.png'>" +
+						                	"</div>" +
+						                	"<div class='store__item__text' style='display: inline-block;'>" +
+						                    "<div><h4>" + json[i].rownum +". "+ json[i].name + "</h4></div>" +
+						                    "<div><h5>" + json[i].address + "</h5></div>" +
+						                    "<div><h5>" + json[i].call +"</h5></div>" +
+						                    "<input type='hidden' value=" + json[i].code +" name='code' />" +
+						                    "<div align='right'>" + json[i].name  + " 더보기 </div>" +
+								            "</div>" +
+							            "</div>" +
+						        	"</div>" +
+					    		"</div>";
+					}
+				},
+				error: function(request, status, error){
+					alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+			 	}
+			});
+		}
+		
 </script>
 
 <form name="storeListForm">
 	<div class="ov-hid">
+	    
 	    <!-- Page Preloder -->
 	    <div id="preloder">
 	        <div class="loader"></div>
 	    </div>
-	    <div align="left">
-	    	<div>${hotPlace}</div>
-	    	<div>${hotPlaceInfo}</div>
+	    
+	    <div class="store__text__top" align="left">
+	    	<div id="hotPlace">${hotPlace}</div>
+	    	<div id="hotPlaceInfo">${hotPlaceInfo}</div>
 	    </div>
 	    
-	    <c:forEach items="${storeList}" var="store" varStatus="status"> 
-		    <!-- Listing Section Begin -->
-		    <div class="store nice-scroll" align="center">
-		        <div class="store__text__top">
-		            
-		        </div>
-		        <div class="store__list">
-		            <div class="store_item" style="cursor: pointer;">
-		                <div class="store_item_img" style="display: inline-block;">
-		                    <img src="<%=ctxPath %>/resources/images/레노보.png">
-		                </div>
-		                
-		                <div class="store__item__text" style="display: inline-block;">
-		                    <div><h4>${status.index + 1}. ${store.name}</h4></div>
-		                    <div><h5>${store.address}</h5></div>
-		                    <div><h5>${store.call}</h5></div>
-		                    <input type="hidden" value="${store.code}" name="code" />
-		                    <div align="right">${store.name} 더보기</div>
-		                </div>
-		            </div>
-		        </div>
-		    </div>
-	    </c:forEach>
+	    <div id="storeList">
+		    <c:forEach items="${storeList}" var="store" varStatus="status"> 
+			    <!-- Listing Section Begin -->
+			    <div class="store nice-scroll" align="center">
+			        <div class="store__list">
+			            <div class="store_item" style="cursor: pointer;">
+			                <div class="store_item_img" style="display: inline-block;">
+			                    <img src="<%=ctxPath %>/resources/images/레노보.png">
+			                </div>
+			                
+			                <div class="store__item__text" style="display: inline-block;">
+			                    <div><h4>${status.index + 1}. ${store.name}</h4></div>
+			                    <div><h5>${store.address}</h5></div>
+			                    <div><h5>${store.call}</h5></div>
+			                    <input type="hidden" value="${store.code}" name="code" />
+			                    <div align="right">${store.name} 더보기</div>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+		    </c:forEach>
+	    </div>
 	    <!-- Listing Section End -->
+	    <input type="hidden" value="${scrollCtrl}" id="scrollCtrl" />
 	</div>
-</form>
  <!-- Js Plugins -->
     <script src="<%=ctxPath %>/resources/js/jquery-3.3.1.min.js"></script>
     <script src="<%=ctxPath %>/resources/js/bootstrap.min.js"></script>
@@ -85,4 +144,5 @@
     <script src="<%=ctxPath %>/resources/js/jquery.slicknav.js"></script>
     <script src="<%=ctxPath %>/resources/js/owl.carousel.min.js"></script>
     <script src="<%=ctxPath %>/resources/js/main.js"></script>
+</form>
     

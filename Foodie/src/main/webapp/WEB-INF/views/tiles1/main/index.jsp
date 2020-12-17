@@ -65,7 +65,7 @@ div.listing__item{
 			
 			var hotPlaceInfo = $("p.top_list2").eq(index).text();
 			
-			location.href="<%=ctxPath %>/storeBoard/storeMain.food?hotPlace="+hotPlace+"&hotPlaceInfo="+hotPlaceInfo;
+			location.href="<%=ctxPath %>/storeBoard/storeMain.food?hotPlace="+hotPlace+"&hotPlaceInfo="+hotPlaceInfo+"&scrollCtrl=1";
 		});
 		
 	});

@@ -6,7 +6,7 @@
 <!-- ==== #29. 루트 엘리먼트 & 네임스페이스 설정(프로젝트 전체내에서 유일해야 한다.) ==== -->
 <mapper namespace="foodie">
 
-	<select id="storeList" resultType="com.spring.foodie.model.SearchVO" parameterType="String">
+	<select id="storeList" resultType="com.spring.foodie.model.SearchVO" parameterType="HashMap">
 	SELECT ROWNUM, STORE.CODE, STORE.TYPE, STORE.OPEN_STATUS, STORE.HYGINE,
 	STORE.NAME, STORE.CALL,
 	NVL(STORE.POSTCODE_NEW, STORE.POSTCODE_OLD) AS POSTCODE, NVL(STORE.ADDR_NEW, STORE.ADDR_OLD)
@@ -21,6 +21,7 @@
 	POSTCODE_OLD) ASC) STORE
 	WHERE LOWER(REPLACE(TRIM(STORE.SEARCH_ALL), ' ', ''))
 	LIKE LOWER(REPLACE(TRIM('%'||#{place}||'%'), ' ', '%'))
+	AND ROWNUM BETWEEN #{scrollCtrl}*20-19  AND #{scrollCtrl}*20
 	ORDER BY ROWNUM ASC
 	</select>
 	

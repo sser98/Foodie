@@ -1,7 +1,9 @@
 package com.spring.foodie.model;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -39,8 +41,13 @@ public class FoodieDAO implements InterFoodieDAO {
     // 그러므로 sqlsession 는 null 이 아니다.
 
 	@Override
-	public List<SearchVO> getStoreList(String place) {
-		List<SearchVO> storeList = sqlsession.selectList("foodie.storeList", place);
+	public List<SearchVO> getStoreList(String place, String scrollCtrl) {
+		
+		Map<String,String> paraMap = new HashMap<String,String>();
+		paraMap.put("place", place);
+		paraMap.put("scrollCtrl", scrollCtrl);
+		
+		List<SearchVO> storeList = sqlsession.selectList("foodie.storeList", paraMap);
 		return storeList;
 	}
 
