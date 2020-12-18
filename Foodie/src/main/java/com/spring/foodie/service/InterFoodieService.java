@@ -13,11 +13,7 @@ public interface InterFoodieService {
 
 	List<Map<String, String>> moreView(String place, String scrollCtrl);
 
-	
+	// 검색하기
+	List<SearchVO> searchList(Map<String, String> paraMap);
+
 }
-
-
-
-
-
-

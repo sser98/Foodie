@@ -84,3 +84,4 @@ public class SearchVO {
       this.rownum = rownum;
    }
 }
+

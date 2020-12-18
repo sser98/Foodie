@@ -10,6 +10,8 @@ public interface InterFoodieDAO {
 	SearchVO getStoreDetail(String code);
 
 	List<Map<String, String>> moreView(String place, String scrollCtrl);
+	//검색
+	List<SearchVO> searchList(Map<String, String> paraMap);
 	
 	
 }

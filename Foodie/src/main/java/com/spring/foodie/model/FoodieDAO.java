@@ -72,6 +72,13 @@ public class FoodieDAO implements InterFoodieDAO {
 		return storeList;
 	}
 	
+	@Override
+	public List<SearchVO> searchList(Map<String, String> paraMap) {
+		List<SearchVO> searchList = sqlsession.selectList("foodie.searchList", paraMap);
+		return searchList;
+	
+	}
+	
 	
 	
 }
