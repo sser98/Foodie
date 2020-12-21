@@ -19,7 +19,7 @@
                 <div class="col-lg-8">
                     <div class="listing__hero__option">
                         <div class="listing__hero__icon">
-                            <img src="<%=ctxPath %>/resources/img/listing/details/ld-icon.png" alt="">
+                            <img src="<%=ctxPath %>/resources/img/listing/details/ld-icon.png">
                         </div>
                         <div class="listing__hero__text">
                             <h2>${svo.name}</h2>

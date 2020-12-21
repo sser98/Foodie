@@ -66,15 +66,16 @@ div.set-bg{
 
    $(document).ready(function() {
       
+	   // 맛집 탭 내부의 지역핫플레이스를 누를 경우 이벤트가 일어난 버튼의 정보를 Controller로 전송하는 기능
       $("div.listing__item").click(function() {
          
          var index = $("div.listing__item").index(this);
          
          var hotPlace = $("span.top_list").eq(index).text();
          
-         var hotPlaceInfo = $("span.top_list2").eq(index).text();
+         var hotPlaceInfo = $("p.top_list2").eq(index).text();
          
-         location.href="<%=ctxPath %>/storeBoard/storeMain.food?hotPlace="+hotPlace+"hotPlaceInfo="+hotPlaceInfo+"&scrollCtrl=1";
+         location.href="<%=ctxPath %>/storeBoard/storeMain.food?hotPlace="+hotPlace+"&hotPlaceInfo="+hotPlaceInfo+"&scrollCtrl=1";
       });
       
    });

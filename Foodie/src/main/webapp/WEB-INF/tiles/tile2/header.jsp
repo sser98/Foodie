@@ -14,18 +14,18 @@
 	InetAddress inet = InetAddress.getLocalHost(); 
 	String serverIP = inet.getHostAddress();
 	
-	//System.out.println("serverIP : " + serverIP);
+	System.out.println("serverIP : " + serverIP);
 	// serverIP : 192.168.56.65
 	
 	// String serverIP = "192.168.50.65"; 만약에 사용중인 IP주소가 고정IP 이라면 IP주소를 직접입력해주면 된다.
 	
 	// === 서버 포트번호 알아오기   ===
 	int portnumber = request.getServerPort();
-	//System.out.println("portnumber : " + portnumber);
+	System.out.println("portnumber : " + portnumber);
 	// portnumber : 9090
 	
 	String serverName = "http://"+serverIP+":"+portnumber; 
-	//System.out.println("serverName : " + serverName);
+	System.out.println("serverName : " + serverName);
 	//serverName : http://192.168.50.65:9090 
 %>
 
