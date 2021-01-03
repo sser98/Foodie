@@ -36,7 +36,7 @@
 
         // 주소로 좌표를 검색합니다
         geocoder.addressSearch("해양4로 31", function(result, status) {
-
+			
             // 정상적으로 검색이 완료됐으면 
             if (status === kakao.maps.services.Status.OK) {
 
@@ -47,7 +47,8 @@
                     map: map,
                     position: coords
                 });
-
+				
+                
                 // 인포윈도우로 장소에 대한 설명을 표시합니다
                 var infowindow = new kakao.maps.InfoWindow({
                     content: '<div style="width:150px;text-align:center;padding:6px 0;">정섭이형집</div>'

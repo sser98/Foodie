@@ -3,14 +3,12 @@
  1. 스마트 에디터를 다운받아 /webapp/resources/ 아래에 smarteditor 폴더를 생성후
     그 아래에 다운받은 스마트 에디터 소스를 붙여두기를 한다.
  
-  
  2. jQuery + 에디터관련JS파일을 include 한다.
 
     /Board/src/main/webapp/WEB-INF/tiles/layout/layout-tiles1.jsp 에서
     
     <script type="text/javascript" src="<%=request.getContextPath() %>/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
        을 추가한다. 
-
 
  3. /Board/src/main/webapp/WEB-INF/views/tiles1/board/add.jsp 에서
 
@@ -33,8 +31,9 @@
 	            bUseVerticalResizer : true,    
 	            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
 	            bUseModeChanger : true,
-	        }
+	        }ㄴ
 	    });
+	    
 	    
 	    //쓰기버튼
 	    $("#btnWrite").click(function(){
@@ -104,7 +103,7 @@
 	    //전역변수
 	    var obj = [];
 	    
-	    //스마트에디터 프레임생성
+	    // 스마트에디터 프레임생성
 	    nhn.husky.EZCreator.createInIFrame({
 	        oAppRef: obj,
 	        elPlaceHolder: "content",
@@ -119,7 +118,7 @@
 	        }
        });
     
-      //완료버튼
+      // 완료버튼
       $("#btnUpdate").click(function(){
           //id가 content인 textarea에 에디터에서 대입
           obj.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
@@ -237,7 +236,7 @@
 
    **  메이븐을 사용하는 경우
     :  jai_codec.jar, jai_core.jar 파일 Maven dependency
-
+	
     <repository>
 	    <id>osgeo</id>
 	    <name>OSGeo Release Repository</name>
