@@ -59,4 +59,10 @@ public interface InterFoodieService {
 
 	int modifyPw(Map<String, String> paraMap); // 비밀번호 변경하기
 
+	int duplicateCheckStoreLike(Map<String, String> paraMap); // 찜하기 중복검사
+
+	int storelike(Map<String, String> paraMap); // 찜하기 추가
+	
+	int delstorelike(Map<String, String> paraMap); // 찜하기 삭제 
+
 }

@@ -47,12 +47,13 @@ span.error {
 }
 
 .CheckResult {
-	font-size: 8pt;
+	font-size: 8pt;  
 }
 
 .requiredInfo {
 	width: 100%;
 	height: 48px;
+	
 }
 
 ul {
@@ -140,11 +141,15 @@ button:hover:before, button:hover:after {
 	width: 100%;
 	transition: 800ms ease all;
 }
+
 </style>
 <script src="<c:url value="/resources/js/jquery-3.3.1.min.js" />"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+	
+	
+	
 	var flagCertificate = false;
 	var flaghp = "";
 	var key = "";
@@ -228,6 +233,7 @@ button:hover:before, button:hover:after {
 
 				});
 
+				
 				//////////////////////////////// 
 				$("input#certificateNum").blur(
 						function() {
@@ -432,7 +438,7 @@ button:hover:before, button:hover:after {
 											<input class="" type="text" id="hp1" name="hp1" size="8" maxlength="3" value="010" readonly />&nbsp;-&nbsp; 
 											<input class="" type="text" id="hp2" name="hp2" size="8" maxlength="4" />&nbsp;-&nbsp; 
 											<input class="" type="text" id="hp3" name="hp3" size="8" maxlength="4" /> 
-											<button style="font-size: 8pt; margin-bottom: 0pt;" onclick="sendMsg();">인증번호</button>
+											<button style="font-size: 8pt; margin-bottom: 0pt; margin-left: 30pt;" onclick="sendMsg();">인증번호</button>
 											<!-- <span style="display: inline-block; width: 90px; height: 30px; border: solid 1px gray; border-radius: 5px; font-size: 8pt; text-align: center; margin-left: 10px; cursor: pointer;" onclick="sendMsg();">인증번호 받기</span> -->
 									   </div>
 								   </div> <br> <span id="error" class="error">휴대폰 형식이 아닙니다.</span>

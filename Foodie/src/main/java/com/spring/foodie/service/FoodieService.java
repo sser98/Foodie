@@ -232,4 +232,23 @@ public class FoodieService implements InterFoodieService {
 		return n;
 	}
 
+	@Override
+	public int duplicateCheckStoreLike(Map<String, String> paraMap) {
+		int n = dao.duplicateCheckStoreLike(paraMap);		
+		return n;
+	}
+
+	@Override
+	public int storelike(Map<String, String> paraMap) {
+		int n = dao.storelike(paraMap);
+		
+		return n;
+	}
+
+	@Override
+	public int delstorelike(Map<String, String> paraMap) {
+		int n = dao.delstorelike(paraMap);
+		return n;
+	}
+
 }

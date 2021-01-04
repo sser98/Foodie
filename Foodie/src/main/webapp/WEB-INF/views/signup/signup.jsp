@@ -360,14 +360,14 @@
 		
 		$.ajax({
     		url:"<%= ctxPath%>/emailDuplicateCheck.food",
-    		data:{"email":$("input#email").val()}, // data 는 /foodie/emailDuplicateCheck.food 로 전송해야할 데이터를 말한다. 
+    		data:{"email":$("input#email").val()},  
     		type:"post",
-    		dataType:"json",   // Javascript Standard Object Notation.  dataType은  /foodie/emailDuplicateCheck.food 로 부터 실행되어진 결과물을 받아오는 데이터타입을 말한다. 
+    		dataType:"json",    
     		success:function(json){
     			if(json.isExists) {
     				// 입력한 email 이 이미 사용중이라면 
     				$("span#emailCheckResult").html("이미 사용중인 이메일 입니다.").css("color","red");
-    				/* $("input#email").val(""); */
+    				
     			}
     			else {
     				// 입력한 email 이 DB 테이블에 존재하지 않는 경우라면 

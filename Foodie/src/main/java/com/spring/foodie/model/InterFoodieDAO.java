@@ -59,6 +59,12 @@ public interface InterFoodieDAO {
 	int searchPwd(Map<String, String> paraMap); // 이메일과 휴대폰 번호로 사용자 찾기
 
 	int modifyPw(Map<String, String> paraMap);  // 비밀번호 변경하기
+
+	int duplicateCheckStoreLike(Map<String, String> paraMap); // 가게  찜하기 중복검사
+
+	int storelike(Map<String, String> paraMap); // 가게 찜하기
+
+	int delstorelike(Map<String, String> paraMap); // 가게 찜하기 삭제하기
 	
 }
 

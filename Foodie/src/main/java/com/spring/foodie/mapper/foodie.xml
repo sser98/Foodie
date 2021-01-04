@@ -183,13 +183,10 @@
 		
 	<!-- 지훈 끝  -->
 	
-	
-	
 	<insert id="likeAdd" parameterType="HashMap">
    insert into tbl_comment_like(FK_EMAIL, FK_SEQ)
    values(#{email}, #{seq})
 	</insert>
-	
 	
 	<update id="likeAddCnt" parameterType="String">
 		update tbl_comment set likecnt = likecnt + 1 
@@ -230,6 +227,22 @@
 		update tbl_member set pwd = #{pwd}
 		where email = #{email}
 	</update>
+	
+	<select id="duplicateCheckStoreLike" parameterType="HashMap" resultType="int">
+		select count(*)
+		from tbl_store_like
+		where fk_email = #{email} and store_id = #{cid}
+	</select>
+	
+	<insert id="storelike" parameterType="HashMap">
+		insert into tbl_store_like(fk_email, store_id, regdate)
+		values(#{email}, #{cid}, default)
+	</insert>
+	
+	<delete id="delstorelike" parameterType="HashMap">
+		delete from tbl_store_like
+		where fk_email = #{email} and store_id = #{cid}
+	</delete>
 	
 </mapper>
 

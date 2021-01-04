@@ -209,6 +209,26 @@ public class FoodieDAO implements InterFoodieDAO {
 		int n = sqlsession.update("foodie.modifyPw", paraMap);
 		return n;
 	}
+
+	@Override
+	public int duplicateCheckStoreLike(Map<String, String> paraMap) {
+		
+		int n = sqlsession.selectOne("foodie.duplicateCheckStoreLike", paraMap);
+		return n;
+	}
+	
+	@Override
+	public int storelike(Map<String, String> paraMap) {
+		int n = sqlsession.insert("foodie.storelike", paraMap);
+		return n;
+	}
+
+	@Override
+	public int delstorelike(Map<String, String> paraMap) {
+		int n = sqlsession.delete("foodie.delstorelike", paraMap);
+		return n;
+		
+	}
 	
 	
 	

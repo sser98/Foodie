@@ -9,7 +9,7 @@
 	<style>
 	
 	$("#star0").click(function() {
-	
+		
          reviewnum = 1;
          $("#star0").css("color", "#efef4e");
          $("#star1").css("color", "gray");
@@ -19,7 +19,7 @@
          $(".inputs").text(reviewnum);
          $("#starnums").val(reviewnum);
       });
-
+	
       $("#star1").click(function() {
          reviewnum = 2;
          $("#star0").css("color", "#efef4e");
@@ -81,7 +81,7 @@
  	var photo="";
  	var s2graph="";
  	var feedback="";
- 	
+ 	var cid="";
  	
  	
  	$(document).ready(function () {
@@ -216,9 +216,12 @@
 				s2graph=json.s2graph;
 				feedback=json.feedback;
 				
+				cid=basicInfo.cid;
+				
+				console.log(cid);
 				
 				$("#adress_detail").text(basicInfo.address.region.fullname+basicInfo.address.newaddr.newaddrfull);
-				$
+				
 				$("a#page").text(basicInfo.homepage);
 				$("#store_name").text(basicInfo.placenamefull);				
 				$("label#adress_detail").text(basicInfo.address.region.fullname+basicInfo.address.newaddr.newaddrfull);
@@ -238,7 +241,7 @@
 				$("div#commentscnt").text(comment.scorecnt);
 				
 				
-					console.log(allComntcnt);
+	/* 				console.log(allComntcnt);
 					console.log(score);
 					console.log(json);
 				 	console.log(basicInfo.placenamefull);
@@ -246,18 +249,20 @@
 					console.log(comment);
 					console.log(menuInfo);
 					console.log(photo);
-					console.log(s2graph);
+					console.log(s2graph); */
 					
 					
 					
 					
 					html ="";
+					
 					$.each(menuInfo.menuList, function (index, item) {
 						
 						var menu=item.menu;
 						var price=item.price;
 						html += "<li>"+menu+"  :   "+price+"</li>";
 					});
+					
 					$("div#menuList").html(html);
 					
 					
@@ -296,7 +301,7 @@
 			
 			$.ajax({
 				url:"/foodie/readComment.food",
-				data:{"code":"290249009"},
+				data:{"code": "290249009"},
 				type:"GET",
 				dataType:"JSON",
 				success:function(json){
@@ -322,8 +327,6 @@
                         html +="<i class='fa fa-star'></i>";
                         html +="<i class='fa fa-star'></i>";
                         html += "</div>"; 
-                                
-						
                         html += "<span>"+item.regDate+"</span>";
                         html += "<h5>"+item.name+"</h5>";
                         html += "<p>"+item.content+"</p>";  
@@ -359,7 +362,7 @@
 					
 					
 					if(${empty sessionScope.loginuser}) {
-						   alert("제품사용 후기를 작성하시려면 먼저 로그인 하셔야 합니다.");
+						   alert("후기를 작성하시려면 먼저 로그인 하셔야 합니다.");
 						   location.href="/foodie/login.food";
 						   return;
 					   }
@@ -449,8 +452,6 @@
 			   
 			   
 			
-			  // 나중에 다 함수로 쪼개어서 리펙토링해야함 //
-			  
 			   // **** 특정댓글에 대한 좋아요 등록하기 **** // 
 			   function addLike(seq) {
 					
@@ -469,11 +470,8 @@
 						dataType:"JSON",
 						success:function(json){  
 							var n = json.n;
-							console.log(n);
-							
 							if(n == 0) {
 								// 좋아요를 클릭한적이 없는경우 
-								//
 								   $.ajax({
 									   url:"/foodie/likeAdd.food",
 									   type:"POST",
@@ -481,24 +479,18 @@
 										     "email":"${sessionScope.loginuser.email}"},
 									   dataType:"JSON", 
 									   success:function(json) {
-										   
 										getComment();	
-												 
-												
-											
 											
 									   },
 									   error: function(request, status, error){
 											alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
 									   }
 								   });
-								//
 							}
 							
 							else {
 								// 좋아요를 클릭한 적이 있는경우
 								
-								 								
 								$.ajax({
 									url:"<%= request.getContextPath()%>/delLikeCnt.food",
 									data:{"seq":seq,
@@ -535,7 +527,115 @@
 				
 				   
 			   }// end of addLike(seq)---------------
-		
+			   
+			   
+			function likeStore() {				
+					
+				$.ajax({
+					url:"<%= request.getContextPath()%>/storelike.food",
+					data:{"cid":cid,
+					     "email":"${sessionScope.loginuser.email}"},
+					type:"POST",
+					dataType:"JSON",
+					success:function(json){
+						
+						
+						alert("추가되었습니다.22222");
+																
+						
+					},
+					
+					error: function(request, status, error){
+						console.log("ajax 실패");
+						console.log(cid);
+						console.log(email);
+						
+						alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+				 	}
+					
+				});
+				   
+			};
+
+			
+			function delStoreLike() {
+				
+				$.ajax({
+					url:"<%= request.getContextPath()%>/delstorelike.food",
+					data:{"cid":cid,
+					     "email":"${sessionScope.loginuser.email}"},
+					type:"POST",
+					dataType:"JSON",
+					success:function(json){  
+						var n = json.n;
+						
+						if(n == 0) {
+							
+							
+							return false;
+							
+						} else {
+							
+							alert("삭제에 성공하셨습니다.");
+							
+						}
+																
+						
+					},
+					
+					error: function(request, status, error){
+						alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+				 	}
+					
+				});
+				
+			};
+			
+			   
+			function duplicateStoreLike() {
+				
+				if(${empty sessionScope.loginuser}) {
+					   alert("찜하기 하시려면 먼저 로그인 하셔야 합니다.");
+					   location.href="/foodie/login.food";
+					   return;
+					   
+				   }
+				
+				$.ajax({
+					url:"<%= request.getContextPath()%>/duplicateCheckStoreLike.food",
+					data:{"cid":cid,
+					     "email":"${sessionScope.loginuser.email}"},
+					type:"POST",
+					dataType:"JSON",
+					success:function(json){  
+						var n = json.n;
+						console.log(n);
+						
+						if(n == 1) {
+							
+							alert("삭제합니다.");
+							
+							delStoreLike();
+							
+						} else {
+							
+							alert("추가합니다.111111");
+							
+							likeStore();
+						}
+																
+						
+					},
+					
+					error: function(request, status, error){
+						alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+				 	}
+					
+				});
+				   
+				
+			};   
+			   
 	</script>
 
 	
@@ -571,7 +671,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="listing__hero__btns">
-                        <a href="#" class="primary-btn"><i class="fa fa-bookmark"></i> 가고싶다</a>
+                        <a href="#" class="primary-btn" onclick="duplicateStoreLike();"><i class="fa fa-bookmark"></i> 가고싶다</a>
                     </div>
                 </div>
             </div>
@@ -670,14 +770,14 @@
                             	<input name ="code" type="hidden" value="290249009">   <%-- ${code} --%>
                             	<input name ="spoint" type="hidden" value="3">   
                                 <textarea name="content" placeholder="공개 댓글 추가 ..."></textarea>
-								<div style="display: inline-block; class="listing__details__comment__item__rating" >
+<!-- 								<div style="display: inline-block;" class="listing__details__comment__item__rating" >
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
                                 </div>
-                                    
+                                     -->
                             </form>
                             <button class="site-btn" onclick="goAddWrite();">댓글</button>
                         </div>

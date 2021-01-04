@@ -46,6 +46,7 @@ public class FoodieController {
 		
 	}
 	
+	
 	// index.food에서 넘겨받은 지역명을 분리하여 해당 위치만 검색리스트에 추가시켜주는 메서드
 	@RequestMapping(value = "/storeBoard/storeMain.food")
 	public ModelAndView viewMainBoard(ModelAndView mav, HttpServletRequest request) {
@@ -269,15 +270,6 @@ public class FoodieController {
 		String name=request.getParameter("name");
 		String spoint=request.getParameter("spoint");
 		String content=request.getParameter("content");
-		
-		
-		
-		System.out.println(email);
-		System.out.println(code);
-		System.out.println(name);
-		System.out.println(spoint);
-		System.out.println(content);
-		
 		
 		commentvo.setStore_id(code);
 		commentvo.setContent(content);
@@ -762,25 +754,15 @@ public class FoodieController {
 	         String api_secret = "UZJM0KAZVB7MKVPXR9SXJS7PGTMCJKEU";  
 	         Message coolsms = new Message(api_key, api_secret);
 	         
-
-	         
 	         String hp1 = request.getParameter("hp1");
 	         String hp2 = request.getParameter("hp2");
 	         String hp3 = request.getParameter("hp3");
-	         
-	          System.out.println(hp1);
-	          System.out.println(hp2);
-	          System.out.println(hp3);
-	        	 
-		      String number=hp1+hp2+hp3;
+		     String number=hp1+hp2+hp3;
 	         
 	         TempKey temkey = new TempKey();
-	         String key=temkey.getKey(6, true);
+	         String key=temkey.getKey(6, true); // 임의 난수 발생 클래스
 	         
 	         String smsContent = "인증번호 는 "+key+" 입니다.";
-	         
-	         
-	         
 	         // == 4개 파라미터(to, from, type, text)는 필수사항이다. == 
 	         HashMap<String, String> paraMap = new HashMap<String, String>();
 	         paraMap.put("to", number); // 수신번호
@@ -788,16 +770,13 @@ public class FoodieController {
 	         paraMap.put("type", "SMS"); // Message type ( SMS(단문), LMS(장문), MMS, ATA )
 	         paraMap.put("text", smsContent); // 문자내용    
 	         paraMap.put("app_version", "JAVA SDK v2.2"); // application name and version
-	         
 	         org.json.simple.JSONObject jsobj = (org.json.simple.JSONObject) coolsms.send(paraMap);
 	       
-	         
-	         
 	         JSONObject jsonObj = new JSONObject(); // {}
 	         jsonObj.put("key", key);
 	         return jsonObj.toString();
-	         
 	   }
+	   
 	   
 	   // === 이메일 찾기  Ajax === //
 	   @ResponseBody
@@ -1057,5 +1036,85 @@ public class FoodieController {
 
 	   }
 	   
+	   // 찜하기 추가
+	   @ResponseBody
+	   @RequestMapping(value = "/storelike.food", method= {RequestMethod.POST}, produces="text/plain;charset=UTF-8")
+	   public String storelike(HttpServletRequest request, ModelAndView mav) {
+
+	      
+	      String email = request.getParameter("email");
+	      String cid = request.getParameter("cid");
+	      
+	      Map<String, String> paraMap = new HashMap<>();
+	      
+	      paraMap.put("email", email);
+	      paraMap.put("cid", cid);
+	      
+	      
+	      
+	      int n = service.storelike(paraMap);
+	      
+	      System.out.println("Frontcontroller service n 확인, " + n);
+	      
+	      
+	      JSONObject jsonObj = new JSONObject(); // {}
+	      jsonObj.put("n", n);
+
+	      return jsonObj.toString();
+
+	   }
+
+		// === 찜하기 중복검사하기 === // 
+		@ResponseBody
+		@RequestMapping(value="/duplicateCheckStoreLike.food", method= {RequestMethod.POST}, produces="text/plain;charset=UTF-8")
+		public String duplicateCheckStoreLike(HttpServletRequest request, CommentVO commentvo) {
+			
+			
+			String cid = request.getParameter("cid");
+			String email = request.getParameter("email");
+			
+			
+			System.out.println(cid);
+			System.out.println(email);
+			
+			// 가게 id, 댓글 no 수에 넣어주어야 함.
+			Map<String, String> paraMap = new HashMap<>();
+			paraMap.put("cid", cid);
+			paraMap.put("email", email);
+			
+			int n=service.duplicateCheckStoreLike(paraMap);
+				
+			JSONObject jsonObj = new JSONObject();
+			jsonObj.put("n", n);
+			
+			return jsonObj.toString();
+			
+		}
+		
+			
+		   // 찜하기 삭제
+		   @ResponseBody
+		   @RequestMapping(value = "/delstorelike.food", method= {RequestMethod.POST}, produces="text/plain;charset=UTF-8")
+		   public String delstorelike(HttpServletRequest request, ModelAndView mav) {
+
+		      
+		      String email = request.getParameter("email");
+		      String cid = request.getParameter("cid");
+		      
+		      Map<String, String> paraMap = new HashMap<>();
+		      
+		      paraMap.put("email", email);
+		      paraMap.put("cid", cid);
+		      
+		      int n = service.delstorelike(paraMap);
+		      
+		      JSONObject jsonObj = new JSONObject(); // {}
+		      jsonObj.put("n", n);
+
+		      return jsonObj.toString();
+
+		   }
+
+		
 	   
 }

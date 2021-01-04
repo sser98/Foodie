@@ -153,6 +153,7 @@ a {
 </style>
 
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -197,12 +198,12 @@ function loginWithKakao() {
 			      url: "/v2/user/me",
 			      success: function(res) {
 			    	     
-		        		var kakaoid = res.id; // 사용자의 카카오 고유 id를 얻어온다.
-			    	  	var name = res.kakao_account.profile.nickname; // 사용자의 닉네임을 얻어온다.
-			    	    var email = res.kakao_account.email; // 사용자의 이메일을 얻어온다.
-			    	    var thumbnail_image = res.properties.thumbnail_image; 
+		        		var kakaoid = res.id;                                  // 사용자의 카카오 고유 id를 얻어온다.
+			    	  	var name = res.kakao_account.profile.nickname;         // 사용자의 닉네임을 얻어온다.
+			    	    var email = res.kakao_account.email;                   // 사용자의 이메일을 얻어온다.
+			    	    var thumbnail_image = res.properties.thumbnail_image;  // 사용자의 썸네일 이미지 경로를 얻어온다.
 			    	    
-			    	    alert('카카오 사용자에 접근할 수 있는 인증 토큰을 발급받았습니다.\n'+ Kakao.Auth.getAccessToken());
+			    	    
 			    	    $.ajax({
 			        		url:"<%= request.getContextPath()%>/emailDuplicateCheck.food",
 			        		data:{"email":email},  
