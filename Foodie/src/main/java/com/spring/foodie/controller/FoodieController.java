@@ -113,7 +113,7 @@ public class FoodieController {
 		String hotPlace = request.getParameter("hotPlace");
 		String scrollCtrl = request.getParameter("nscrollCtrl");
 		
-		String target = " ";
+		String target = "";
 		
 		String Place = hotPlace.substring(0, hotPlace.indexOf(target));
 		

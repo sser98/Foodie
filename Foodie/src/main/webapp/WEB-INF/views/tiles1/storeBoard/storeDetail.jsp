@@ -3,67 +3,25 @@
 
 <% 
 	String ctxPath = request.getContextPath(); 
+
+	
+	
+
+
+
 %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<style>
 	
-	$("#star0").click(function() {
+		.site-btn {
 		
-         reviewnum = 1;
-         $("#star0").css("color", "#efef4e");
-         $("#star1").css("color", "gray");
-         $("#star2").css("color", "gray");
-         $("#star3").css("color", "gray");
-         $("#star4").css("color", "gray");
-         $(".inputs").text(reviewnum);
-         $("#starnums").val(reviewnum);
-      });
-	
-      $("#star1").click(function() {
-         reviewnum = 2;
-         $("#star0").css("color", "#efef4e");
-         $("#star1").css("color", "#efef4e");
-         $("#star2").css("color", "gray");
-         $("#star3").css("color", "gray");
-         $("#star4").css("color", "gray");
-         $(".inputs").text(reviewnum);
-         $("#starnums").val(reviewnum);
-      });
-      
-      $("#star2").click(function() {
-         reviewnum = 3;
-         $("#star0").css("color", "#efef4e");
-         $("#star1").css("color", "#efef4e");
-         $("#star2").css("color", "#efef4e");
-         $("#star3").css("color", "gray");
-         $("#star4").css("color", "gray");
-         $(".inputs").text(reviewnum);
-         $("#starnums").val(reviewnum);
-      });
-      
-      $("#star3").click(function() {
-         reviewnum = 4;
-         $("#star0").css("color", "#efef4e");
-         $("#star1").css("color", "#efef4e");
-         $("#star2").css("color", "#efef4e");
-         $("#star3").css("color", "#efef4e");
-         $("#star4").css("color", "gray");
-         $(".inputs").text(reviewnum);
-         $("#starnums").val(reviewnum);
-      });
-      
-      $("#star4").click(function() {
-         reviewnum = 5;
-         $("#star0").css("color", "#efef4e");
-         $("#star1").css("color", "#efef4e");
-         $("#star2").css("color", "#efef4e");
-         $("#star3").css("color", "#efef4e");
-         $("#star4").css("color", "#efef4e");
-         $(".inputs").text(reviewnum);
-         $("#starnums").val(reviewnum);
-      });
-	
+			
+		}
+		
+		button#btnAddcomment {
+			font-size: 8pt;
+		}
 
 	</style>
  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=adf2708493f00cbb2f18296dc2c60b88"></script>	
@@ -86,6 +44,65 @@
  	
  	$(document).ready(function () {
 		
+ 		$("#star0").click(function() {
+ 			
+ 	         $("#star0").css("color", "orange");
+ 	         $("#star1").css("color", "gray");
+ 	         $("#star2").css("color", "gray");
+ 	         $("#star3").css("color", "gray");
+ 	         $("#star4").css("color", "gray");
+ 	         $("input[name=spoint]").val("1");
+ 	         
+ 	      });
+ 		
+ 	      $("#star1").click(function() {
+ 	         reviewnum = 2;
+ 	         
+ 	         $("#star0").css("color", "orange");
+ 	         $("#star1").css("color", "orange");
+ 	         $("#star2").css("color", "gray");
+ 	         $("#star3").css("color", "gray");
+ 	         $("#star4").css("color", "gray");
+ 	         $("input[name=spoint]").val("2");
+ 	         
+ 	      });
+ 	      
+ 	      $("#star2").click(function() {
+ 	         
+ 	         $("#star0").css("color", "orange");
+ 	         $("#star1").css("color", "orange");
+ 	         $("#star2").css("color", "orange");
+ 	         $("#star3").css("color", "gray");
+ 	         $("#star4").css("color", "gray");
+ 	         $("input[name=spoint]").val("3");
+ 	      });
+ 	      
+ 	      $("#star3").click(function() {
+ 	         
+ 	         $("#star0").css("color", "orange");
+ 	         $("#star1").css("color", "orange");
+ 	         $("#star2").css("color", "orange");
+ 	         $("#star3").css("color", "orange");
+ 	         $("#star4").css("color", "gray");
+ 	         $("input[name=spoint]").val("4");
+ 	         
+ 	      });
+ 	      
+ 	      $("#star4").click(function() {
+ 	    	  
+ 	         $("#star0").css("color", "orange");
+ 	         $("#star1").css("color", "orange");
+ 	         $("#star2").css("color", "orange");
+ 	         $("#star3").css("color", "orange");
+ 	         $("#star4").css("color", "orange");
+ 	         $("input[name=spoint]").val("5");
+ 	         
+ 	      });
+ 		
+ 	      
+ 		
+ 		
+ 		
  		
  		goViewJson();
 
@@ -125,16 +142,12 @@
            
            // GeoLocation을 이용해서 웹페이지에 접속한 사용자의 현재 위치를 확인하여 그 위치(위도,경도)를 지도의 중앙에 오도록 한다.
            navigator.geolocation.getCurrentPosition(function(position) { 
-
               
               var latitude = position.coords.latitude;   // 현위치의 위도
               var longitude = position.coords.longitude; // 현위치의 경도
            
-              
-              
-            // 마커가 표시될 위치를 geolocation으로 얻어온 현위치의 위.경도 좌표로 한다   
-            
-            	// 저기 안에다가 꽂아주면 위치가 알아서뜸
+              // 마커가 표시될 위치를 geolocation으로 얻어온 현위치의 위.경도 좌표로 한다   
+              // 저기 안에다가 꽂아주면 위치가 알아서뜸
               /* var locPosition = new kakao.maps.LatLng(37.57777094158683, 126.97679253697846); */
               
               var locPosition = new kakao.maps.LatLng(37.57777094158683, 126.97679253697846);
@@ -190,14 +203,8 @@
              image: markerImage  // 마커이미지 설정
         });
         
-         
-
- 	
- 		
 	}); // end of ready
  	
-
-	
  	function goViewJson() {
 		
 		$.ajax({
@@ -221,7 +228,6 @@
 				console.log(cid);
 				
 				$("#adress_detail").text(basicInfo.address.region.fullname+basicInfo.address.newaddr.newaddrfull);
-				
 				$("a#page").text(basicInfo.homepage);
 				$("#store_name").text(basicInfo.placenamefull);				
 				$("label#adress_detail").text(basicInfo.address.region.fullname+basicInfo.address.newaddr.newaddrfull);
@@ -251,9 +257,6 @@
 					console.log(photo);
 					console.log(s2graph); */
 					
-					
-					
-					
 					html ="";
 					
 					$.each(menuInfo.menuList, function (index, item) {
@@ -265,10 +268,6 @@
 					
 					$("div#menuList").html(html);
 					
-					
-					
-					
-					
 					html ="";
 					
 					var mainphotourl=basicInfo.mainphotourl
@@ -277,19 +276,10 @@
 					
 					$.each(menuInfo.menuList, function (index, item) {
 						
-	                     /* <img data-imgbigurl=mainphotourl src=resources/img/listing/details/thumb-1.jpg" alt=""> */
-						
 					});
 					$("div.listing__details__gallery__slider").html(html);
-					
-               
-					
-					
-					
 				},
-				
 				error : function(request, status, error) {
-
 				}
 
 			});
@@ -306,9 +296,7 @@
 				dataType:"JSON",
 				success:function(json){
 						
-				
 					var html = "";
-					
 					if(json.length > 0) {
 						$.each(json, function(index, item){
 							
@@ -317,27 +305,80 @@
 						html +=	"<div class='listing__details__comment__item__pic'>";
                             
                         html += "<img src='<%=ctxPath %>/resources/img/listing/details/comment.png' alt=''>";
+                        
                         html += "</div>";
-                            
                         html += "<div class='listing__details__comment__item__text'>";
                         html +="<div class='listing__details__comment__item__rating'>";
+                        
+                        if (item.spoint == "1") {
+                        	
+                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
+                            html +="<i class='fa fa-star' style='color='gary;'></i>";
+                            html +="<i class='fa fa-star' style='color='gary;'></i>";
+                            html +="<i class='fa fa-star' style='color='gary;'></i>";
+                            html +="<i class='fa fa-star' style='color='gary;'></i>";
+                        }
+                        
+						if (item.spoint == "2") {
+							
+							html +="<i class='fa fa-star' style='color='orenge;'></i>";
+                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
+                            html +="<i class='fa fa-star' style='color='gary;'></i>";
+                            html +="<i class='fa fa-star' style='color='gary;'></i>";
+                            html +="<i class='fa fa-star' style='color='gary;'></i>";
+                        }
+						
+						if (item.spoint == "3") {
+                        	
+							html +="<i class='fa fa-star' style='color='orenge;'></i>";
+                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
+                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
+                            html +="<i class='fa fa-star' style='color='gary;'></i>";
+                            html +="<i class='fa fa-star' style='color='gary;'></i>";
+                            
+                        }
+						
+						if (item.spoint == "4") {
+							html +="<i class='fa fa-star' style='color='orenge;'></i>";
+                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
+                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
+                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
+                            html +="<i class='fa fa-star' style='color='gary;'></i>";
+							
+                        }
+						
+						if (item.spoint == "5") {
+							html +="<i class='fa fa-star' style='color='orenge;'></i>";
+                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
+                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
+                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
+                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
+							
+                        }
+						
+                        /* html +="<i class='fa fa-star'></i>";
                         html +="<i class='fa fa-star'></i>";
                         html +="<i class='fa fa-star'></i>";
                         html +="<i class='fa fa-star'></i>";
-                        html +="<i class='fa fa-star'></i>";
-                        html +="<i class='fa fa-star'></i>";
+                        html +="<i class='fa fa-star'></i>"; */
+                        
                         html += "</div>"; 
                         html += "<span>"+item.regDate+"</span>";
                         html += "<h5>"+item.name+"</h5>";
                         html += "<p>"+item.content+"</p>";  
                         html += "<ul><li><i onclick='addLike("+item.seq+");' class='fa fa-hand-o-right'></i> Like "+item.likecnt+"</li><li><i onclick='addReply("+item.seq+","+item.depthno+","+item.code+","+index+","+item.groupno+");' class='fa fa-share-square-o'></i> Reply<input id='replycontent"+index+"' type='text'>     "+item.commentcnt+"</li></ul></div></div><hr>";
-							
 						});
+						
 					}
 					
 					else {
-						
+						html +="<i class='fa fa-star' style='color='gary;'></i>";
+	                    html +="<i class='fa fa-star' style='color='gary;'></i>";
+	                    html +="<i class='fa fa-star' style='color='gary;'></i>";
+	                    html +="<i class='fa fa-star' style='color='gray;'></i>";
+	                    html +="<i class='fa fa-star' style='color='gary;'></i>";	
 					}
+					
 					
 					$("div#commentView").html(html);
 			
@@ -351,9 +392,10 @@
 
 			}// end of function goViewJson(){}------------------------
 			
+			
 			// == 댓글쓰기 == //
 			function goAddWrite() {
-				
+					
 					var contentVal = $("textarea[name=content]").val()
 					if(contentVal == "") {
 						alert("댓글 내용을 입력하세요!!");
@@ -366,8 +408,6 @@
 						   location.href="/foodie/login.food";
 						   return;
 					   }
-						
-					
 					
 					var form_data = $("form[name=addcomment]").serialize();
 					
@@ -390,6 +430,12 @@
 							}
 							
 							$("textarea[name=content]").val("");
+							$("#star0").css("color", "orange");
+				 	        $("#star1").css("color", "gray");
+				 	        $("#star2").css("color", "gray");
+				 	        $("#star3").css("color", "gray");
+				 	        $("#star4").css("color", "gray");
+				 	        $("input[name=spoint]").val("0");
 						},
 						
 						error: function(request, status, error){
@@ -397,12 +443,6 @@
 					 	}
 					});
 					
-				
-				
-				
-				
-				
-				
 			}// end of function goAddWrite(){}---------------------------
 		
 			
@@ -445,14 +485,11 @@
 						 	}
 						});  
 						    
-					
-	
-				   
 			   }// end of addReply(seq, depthno) ---------------
-			   
 			   
 			
 			   // **** 특정댓글에 대한 좋아요 등록하기 **** // 
+			   
 			   function addLike(seq) {
 					
 					if(${empty sessionScope.loginuser}) {
@@ -498,12 +535,8 @@
 									type:"POST",
 									dataType:"JSON",
 									success:function(json){  
-										
-										
 									getComment();										
-										
 									},
-									
 									error: function(request, status, error){
 										alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
 								 	}
@@ -523,9 +556,6 @@
 						
 					});//
 					
-					
-				
-				   
 			   }// end of addLike(seq)---------------
 			   
 			   
@@ -678,6 +708,7 @@
         </div>
         
     </section>
+    
     <!-- Listing Section End -->
 
     <!-- Listing Details Section Begin -->
@@ -724,35 +755,35 @@
                             </div>
                             <div class="listing__details__rating__bar">
                                 <div class="listing__details__rating__bar__item">
-                                    <span>4.4</span>
+                                    <span>1</span>
                                     <div id="bar1" class="barfiller">
                                         <span class="fill" data-percentage="100"></span>
                                     </div>
                                     <span class="right">1</span>
                                 </div>
                                 <div class="listing__details__rating__bar__item">
-                                    <span>3.9</span>
+                                    <span>2</span>
                                     <div id="bar2" class="barfiller">
                                         <span class="fill" data-percentage="75"></span>
                                     </div>
                                     <span class="right">2</span>
                                 </div>
                                 <div class="listing__details__rating__bar__item">
-                                    <span>4.2</span>
+                                    <span>3</span>
                                     <div id="bar3" class="barfiller">
                                         <span class="fill" data-percentage="80"></span>
                                     </div>
                                     <span class="right">3</span>
                                 </div>
                                 <div class="listing__details__rating__bar__item">
-                                    <span>4.8</span>
+                                    <span>4</span>
                                     <div id="bar4" class="barfiller">
                                         <span class="fill" data-percentage="80"></span>
                                     </div>
                                     <span class="right">4</span>
                                 </div>
                                 <div class="listing__details__rating__bar__item">
-                                    <span>4.0</span>
+                                    <span>5</span>
                                     <div id="bar5" class="barfiller">
                                         <span class="fill" data-percentage="85"></span>
                                     </div>
@@ -768,18 +799,25 @@
                             <form name="addcomment">
                             	<input name ="name" type="hidden" value="${loginuser.name}">
                             	<input name ="code" type="hidden" value="290249009">   <%-- ${code} --%>
-                            	<input name ="spoint" type="hidden" value="3">   
-                                <textarea name="content" placeholder="공개 댓글 추가 ..."></textarea>
-<!-- 								<div style="display: inline-block;" class="listing__details__comment__item__rating" >
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                </div>
-                                     -->
+                            	<input name ="spoint" type="hidden" value="0">
+                            	
+                            	<div style="display: flex;">
+                            		<div style="width: 90%">
+                            		<textarea style="resize: both;" name="content" placeholder="공개 댓글 추가 ..."></textarea>
+                            		</div>
+                					<div style="width: 10%; margin-left: 2%;" class="listing__details__comment__item__rating" >
+                                        <i id="star0" class="fa fa-star"></i>
+                                        <i id="star1" class="fa fa-star"></i>
+                                        <i id="star2" class="fa fa-star"></i>
+                                        <i id="star3" class="fa fa-star"></i>
+                                        <i id="star4" class="fa fa-star"></i>
+                                        <button id="btnAddcomment" class="site-btn" style="width: 100%;" onclick="goAddWrite();">댓글</button>
+                                	</div>
+                            	</div>   
+                            	
+   
                             </form>
-                            <button class="site-btn" onclick="goAddWrite();">댓글</button>
+                            <!-- <button class="site-btn" onclick="goAddWrite();">댓글</button> -->
                         </div>
                         
                         

@@ -229,7 +229,7 @@
 	</update>
 	
 	<select id="duplicateCheckStoreLike" parameterType="HashMap" resultType="int">
-		select count(*)
+		select  count(*)
 		from tbl_store_like
 		where fk_email = #{email} and store_id = #{cid}
 	</select>
