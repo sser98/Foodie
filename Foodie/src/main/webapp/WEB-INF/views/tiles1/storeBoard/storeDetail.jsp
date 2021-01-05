@@ -15,12 +15,47 @@
 	<style>
 	
 		.site-btn {
-		
+			
 			
 		}
 		
 		button#btnAddcomment {
 			font-size: 8pt;
+		}
+		
+		.hideUl {
+			
+			/* display: none; */
+			
+		
+		}
+		
+		.replycontent {
+			
+			width: 93%;
+		}
+		
+		div.subcomment1 {
+			
+			margin-left: 10%;
+		}
+		
+		div.subcomment2 {
+			
+			margin-left: 20%;
+		}
+		div.subcomment3 {
+			
+			margin-left: 30%;
+		}
+		
+		div.subcomment4 {
+			
+			margin-left: 40%;
+		}
+		div.subcomment5 {
+			
+			margin-left: 50%;
 		}
 
 	</style>
@@ -44,6 +79,7 @@
  	
  	$(document).ready(function () {
 		
+ 		// 별점 클릭 이벤트
  		$("#star0").click(function() {
  			
  	         $("#star0").css("color", "orange");
@@ -98,16 +134,11 @@
  	         $("input[name=spoint]").val("5");
  	         
  	      });
- 		
- 	      
- 		
- 		
- 		
- 		
- 		goViewJson();
-
- 		getComment();
- 		
+ 	    // 별점 클릭 이벤트 끝
+ 	    // 가져오기 
+ 		goViewJson();       // json 카카오api
+ 		getComment();       // 해당 store_id 
+ 		likestroechecked(); // 좋아요 체크
  		
  		
  		  // 지도를 담을 영역의 DOM 레퍼런스 
@@ -299,84 +330,85 @@
 					var html = "";
 					if(json.length > 0) {
 						$.each(json, function(index, item){
+						
+							console.log(item.depthno);
+						if(item.depthno == "0") {
 							
+							html +=	"<div class='listing__details__comment__item' style='margin-bottom: 0px;'>";
 							
-						html +=	"<div class='listing__details__comment__item' style='margin-bottom: 0px;'>";
+						}
+						
+						else if(item.depthno == "1")  {
+							html +=	"<div class='subcomment1' style='margin-bottom: 0px;'>";	
+						}
+						else if(item.depthno == "2")  {
+							html +=	"<div class='subcomment2' style='margin-bottom: 0px;'>";	
+						}
+						else if(item.depthno == "3")  {
+							html +=	"<div class='subcomment3' style='margin-bottom: 0px;'>";	
+						}
+						else if(item.depthno == "4")  {
+							html +=	"<div class='subcomment4' style='margin-bottom: 0px;'>";	
+						}
+						else if(item.depthno == "5")  {
+							html +=	"<div class='subcomment5' style='margin-bottom: 0px;'>";	
+						}
+						
 						html +=	"<div class='listing__details__comment__item__pic'>";
-                            
                         html += "<img src='<%=ctxPath %>/resources/img/listing/details/comment.png' alt=''>";
-                        
                         html += "</div>";
-                        html += "<div class='listing__details__comment__item__text'>";
+                        html += "<div id='"+index+"' class='listing__details__comment__item__text'>";
                         html +="<div class='listing__details__comment__item__rating'>";
                         
                         if (item.spoint == "1") {
-                        	
-                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
-                            html +="<i class='fa fa-star' style='color='gary;'></i>";
-                            html +="<i class='fa fa-star' style='color='gary;'></i>";
-                            html +="<i class='fa fa-star' style='color='gary;'></i>";
-                            html +="<i class='fa fa-star' style='color='gary;'></i>";
+                            html +="<i class='fa fa-star' style='color:orange;'></i>";
+                            html +="<i class='fa fa-star' style='color:gray;'></i>";
+                            html +="<i class='fa fa-star' style='color:gray;'></i>";
+                            html +="<i class='fa fa-star' style='color:gray;'></i>";
+                            html +="<i class='fa fa-star' style='color:gray;'></i>";
                         }
                         
 						if (item.spoint == "2") {
-							
-							html +="<i class='fa fa-star' style='color='orenge;'></i>";
-                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
-                            html +="<i class='fa fa-star' style='color='gary;'></i>";
-                            html +="<i class='fa fa-star' style='color='gary;'></i>";
-                            html +="<i class='fa fa-star' style='color='gary;'></i>";
+							html +="<i class='fa fa-star' style='color:orange;;'></i>";
+                            html +="<i class='fa fa-star' style='color:orange;;'></i>";
+                            html +="<i class='fa fa-star' style='color:gray;'></i>";
+                            html +="<i class='fa fa-star' style='color:gray;'></i>";
+                            html +="<i class='fa fa-star' style='color:gray;'></i>";
                         }
 						
 						if (item.spoint == "3") {
-                        	
-							html +="<i class='fa fa-star' style='color='orenge;'></i>";
-                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
-                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
-                            html +="<i class='fa fa-star' style='color='gary;'></i>";
-                            html +="<i class='fa fa-star' style='color='gary;'></i>";
+							html +="<i class='fa fa-star' style='color:orange;;'></i>";
+                            html +="<i class='fa fa-star' style='color:orange;;'></i>";
+                            html +="<i class='fa fa-star' style='color:orange;;'></i>";
+                            html +="<i class='fa fa-star' style='color:gray;'></i>";
+                            html +="<i class='fa fa-star' style='color:gray;'></i>";
                             
                         }
 						
 						if (item.spoint == "4") {
-							html +="<i class='fa fa-star' style='color='orenge;'></i>";
-                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
-                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
-                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
-                            html +="<i class='fa fa-star' style='color='gary;'></i>";
-							
+							html +="<i class='fa fa-star' style='color:orange;'></i>";
+                            html +="<i class='fa fa-star' style='color:orange;'></i>";
+                            html +="<i class='fa fa-star' style='color:orange;'></i>";
+                            html +="<i class='fa fa-star' style='color:orange;'></i>";
+                            html +="<i class='fa fa-star' style='color:gray;'></i>";
                         }
 						
 						if (item.spoint == "5") {
-							html +="<i class='fa fa-star' style='color='orenge;'></i>";
-                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
-                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
-                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
-                            html +="<i class='fa fa-star' style='color='orenge;'></i>";
+							html +="<i class='fa fa-star' style='color:orange;'></i>";
+                            html +="<i class='fa fa-star' style='color:orange;'></i>";
+                            html +="<i class='fa fa-star' style='color:orange;'></i>";
+                            html +="<i class='fa fa-star' style='color:orange;'></i>";
+                            html +="<i class='fa fa-star' style='color:orange;'></i>";
 							
                         }
 						
-                        /* html +="<i class='fa fa-star'></i>";
-                        html +="<i class='fa fa-star'></i>";
-                        html +="<i class='fa fa-star'></i>";
-                        html +="<i class='fa fa-star'></i>";
-                        html +="<i class='fa fa-star'></i>"; */
-                        
                         html += "</div>"; 
                         html += "<span>"+item.regDate+"</span>";
                         html += "<h5>"+item.name+"</h5>";
                         html += "<p>"+item.content+"</p>";  
-                        html += "<ul><li><i onclick='addLike("+item.seq+");' class='fa fa-hand-o-right'></i> Like "+item.likecnt+"</li><li><i onclick='addReply("+item.seq+","+item.depthno+","+item.code+","+index+","+item.groupno+");' class='fa fa-share-square-o'></i> Reply<input id='replycontent"+index+"' type='text'>     "+item.commentcnt+"</li></ul></div></div><hr>";
+                        html += "<ul><li><i onclick='addLike("+item.seq+");' class='fa fa-hand-o-right'></i> Like "+item.likecnt+"</li><li><i class='fa fa-share-square-o'></i> Reply "+item.commentcnt+"</li></ul><ul class='hideUl'><input class='replycontent' id='replycontent"+index+"'type='text'><button onclick='addReply("+item.seq+","+item.depthno+","+item.code+","+index+","+item.groupno+");'>답글</button></ul></div></div><hr>";
 						});
 						
-					}
-					
-					else {
-						html +="<i class='fa fa-star' style='color='gary;'></i>";
-	                    html +="<i class='fa fa-star' style='color='gary;'></i>";
-	                    html +="<i class='fa fa-star' style='color='gary;'></i>";
-	                    html +="<i class='fa fa-star' style='color='gray;'></i>";
-	                    html +="<i class='fa fa-star' style='color='gary;'></i>";	
 					}
 					
 					
@@ -392,6 +424,19 @@
 
 			}// end of function goViewJson(){}------------------------
 			
+			// 답글 누르면 아래 ul태그가 show 보여지는 이벤트
+			function showReplycontent(index) {
+				
+				var divNumber=index;
+				
+				
+				
+				console.log($("ul"));
+				
+				
+			};
+			
+			
 			
 			// == 댓글쓰기 == //
 			function goAddWrite() {
@@ -402,13 +447,11 @@
 						return;
 					}
 					
-					
 					if(${empty sessionScope.loginuser}) {
 						   alert("후기를 작성하시려면 먼저 로그인 하셔야 합니다.");
 						   location.href="/foodie/login.food";
 						   return;
 					   }
-					
 					var form_data = $("form[name=addcomment]").serialize();
 					
 					$.ajax({
@@ -423,10 +466,8 @@
 								alert("댓글쓰기 실패");
 							}
 							else {
-								
 								alert("댓글쓰기 성공");
 								getComment(); 
-								
 							}
 							
 							$("textarea[name=content]").val("");
@@ -444,15 +485,11 @@
 					});
 					
 			}// end of function goAddWrite(){}---------------------------
-		
 			
 			   // **** 특정댓글에 댓글 쓰기 // 
 			   function addReply(parentSeq, depthno, code, index, groupno) {
 					
 				    var content=$("input#replycontent"+index).val();
-				    
-				    
-					
 					if(${empty sessionScope.loginuser}) {
 						   alert("댓글을 작성하시려면 먼저 로그인 하셔야 합니다.");
 						   location.href="/foodie/login.food";
@@ -486,8 +523,6 @@
 						});  
 						    
 			   }// end of addReply(seq, depthno) ---------------
-			   
-			
 			   // **** 특정댓글에 대한 좋아요 등록하기 **** // 
 			   
 			   function addLike(seq) {
@@ -540,13 +575,8 @@
 									error: function(request, status, error){
 										alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
 								 	}
-									
 								});
-								 
-								
 							}
-							
-							 
 							
 						},
 						
@@ -558,7 +588,7 @@
 					
 			   }// end of addLike(seq)---------------
 			   
-			   
+			// 가고싶다 추가함수
 			function likeStore() {				
 					
 				$.ajax({
@@ -587,7 +617,7 @@
 				   
 			};
 
-			
+			// 가고싶다 삭제 함수
 			function delStoreLike() {
 				
 				$.ajax({
@@ -621,11 +651,11 @@
 				
 			};
 			
-			   
+			// 가고싶다 중복검사결과에 따라 추가/삭제 함수 실행
 			function duplicateStoreLike() {
 				
 				if(${empty sessionScope.loginuser}) {
-					   alert("찜하기 하시려면 먼저 로그인 하셔야 합니다.");
+					   alert("가고싶다 체크를 하시려면 먼저 로그인 하셔야 합니다.");
 					   location.href="/foodie/login.food";
 					   return;
 					   
@@ -665,7 +695,41 @@
 				   
 				
 			};   
-			   
+			
+			// 가고싶다에 이전에 클릭했을 경우 해당 a태그에 색깔 체크를 한다.
+			function likestroechecked() {
+				
+				$.ajax({
+					url:"<%= request.getContextPath()%>/duplicateCheckStoreLike.food",
+					data:{"cid":cid,
+					     "email":"${sessionScope.loginuser.email}"},
+					type:"POST",
+					dataType:"JSON",
+					success:function(json){  
+						var n = json.n;
+						console.log(n);
+						
+						if(n == 1) {
+							
+							
+							$("a.primary-btn").css('color','red');
+							
+							
+						} else {
+							
+						}
+																
+						
+					},
+					
+					error: function(request, status, error){
+						alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+				 	}
+					
+				});
+			};
+			
+			
 	</script>
 
 	
@@ -792,7 +856,55 @@
                             </div>
                         </div>
                         
-                        
+                        <div>
+						<div class="media">
+							<div class="media-left">
+								<img src="img_avatar1.png" class="media-object" style="width: 45px">
+							</div>
+							<div class="media-body">
+								<h4 class="media-heading">
+									John Doe <small><i>Posted on February 19, 2016</i></small>
+								</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+									sed do eiusmod tempor incididunt ut labore et dolore magna
+									aliqua.</p>
+
+								<!-- Nested media object -->
+								<div class="media">
+									<div class="media-left">
+										<img src="img_avatar2.png" class="media-object" style="width: 45px">
+									</div>
+									
+									<div class="media-body">
+										<h4 class="media-heading">
+											John Doe <small><i>Posted on February 19, 2016</i></small>
+										</h4>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing
+											elit, sed do eiusmod tempor incididunt ut labore et dolore
+											magna aliqua.
+										</p>
+
+										<!-- Nested media object -->
+										<div class="media">
+											<div class="media-left">
+												<img src="img_avatar3.png" class="media-object" style="width: 45px">
+											</div>
+											<div class="media-body">
+												<h4 class="media-heading">
+													John Doe <small><i>Posted on February 19, 2016</i></small>
+												</h4>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing
+													elit, sed do eiusmod tempor incididunt ut labore et dolore
+													magna aliqua.
+												</p>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
                         
                          <div class="listing__details__review">
                             

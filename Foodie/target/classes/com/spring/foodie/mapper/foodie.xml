@@ -89,7 +89,7 @@
 		
 	<!-- == 상품가게 에 딸린 댓글들 대댓글 정리 이전을 조회해오는 것  -->
     <select id="getCommentList" parameterType="String" resultType="com.spring.foodie.model.CommentVO"> 
-		select seq, fk_email, name, content, spoint, regDate, store_id, status, likecnt, cntcomments, parentSeq, depthno, groupno
+		select seq, fk_email, name, content, spoint, to_char(regDate, 'yyyy-mm-dd') as regDate, store_id, status, likecnt, cntcomments, parentSeq, depthno, groupno
      
 			from 
 			(

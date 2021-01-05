@@ -144,6 +144,8 @@ public class FoodieController {
 		
 		String code = request.getParameter("code"); // 가게코드
 		
+		
+		
 		mav.setViewName("storeBoard/storeDetail.tiles1");
 		
 		return mav;
