@@ -128,12 +128,10 @@ public class FoodieController {
 			jsonObj.put("CALL", svo.get("CALL"));
 			jsonObj.put("ADDRESS", svo.get("ADDRESS"));
 			jsonObj.put("CODE", svo.get("CODE"));
-			
 			jsonArr.put(jsonObj);
 		}
 		
 		String json = jsonArr.toString();
-		
 		System.out.println(json);
 		
 		return json;
@@ -144,8 +142,9 @@ public class FoodieController {
 		
 		String code = request.getParameter("code"); // 가게코드
 		
+		int totalCnt = service.getCommentCnt(code);
 		
-		
+		mav.addObject("totalCnt", totalCnt);
 		mav.setViewName("storeBoard/storeDetail.tiles1");
 		
 		return mav;
@@ -255,6 +254,7 @@ public class FoodieController {
 		
 		return json.toString();
 	}
+	
 	
 	// === #84. 댓글쓰기(Ajax 로 처리) === // 
 	@ResponseBody
@@ -371,11 +371,22 @@ public class FoodieController {
 	public String readComment(HttpServletRequest request) {
 		
 		String code = request.getParameter("code");
+		String end = request.getParameter("end");
+		String len = request.getParameter("len");
 		
-		
-		List<CommentVO> commentList = service.getCommentList(code); 
-		System.out.println(commentList.size());
 		JSONArray jsonArr = new JSONArray(); 
+		
+		end = String.valueOf(Integer.parseInt(end) + Integer.parseInt(len));
+				
+		Map<String,String> paraMap = new HashMap<>();
+		
+		
+		paraMap.put("endRno", end);
+		paraMap.put("code", code);
+		
+		// 페이징 처리한 글목록 가져오기
+		List<CommentVO> commentList = service.getCommentList(paraMap);
+		
 		
 		if(commentList != null) {
 			for(CommentVO cmtvo : commentList) {
@@ -390,9 +401,9 @@ public class FoodieController {
 				jsonObj.put("spoint", cmtvo.getSpoint());
 				jsonObj.put("depthno", cmtvo.getDepthno());
 				jsonObj.put("groupno", cmtvo.getGroupno());
-				
 				jsonArr.put(jsonObj);
 			}
+			
 		}
 		
 		return jsonArr.toString();

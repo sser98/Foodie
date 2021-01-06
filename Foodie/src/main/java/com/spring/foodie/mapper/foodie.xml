@@ -88,9 +88,8 @@
 	<!-- 지훈시작  -->
 		
 	<!-- == 상품가게 에 딸린 댓글들 대댓글 정리 이전을 조회해오는 것  -->
-    <select id="getCommentList" parameterType="String" resultType="com.spring.foodie.model.CommentVO"> 
+    <select id="getCommentList" parameterType="HashMap" resultType="com.spring.foodie.model.CommentVO"> 
 		select seq, fk_email, name, content, spoint, to_char(regDate, 'yyyy-mm-dd') as regDate, store_id, status, likecnt, cntcomments, parentSeq, depthno, groupno
-     
 			from 
 			(
     		select rownum AS rno
@@ -103,11 +102,30 @@
         			start with parentSeq = 0 
         			connect by prior seq = parentSeq 
 	        		order siblings by groupno desc, seq asc  
-        
     			) V 
 			) T 
-		where rno between 1 and 10
+		where rno between 1 and #{endRno}
     </select>
+    
+    	<!-- == 상품가게에 딸린 댓글의 수 얻어오기-->
+    <select id="getCommentCnt" parameterType="String" resultType="int"> 
+		select count(*)
+			from 
+			(
+    		select rownum AS rno
+         	, seq, fk_email, name, content, spoint, regDate, store_id, status, likecnt, cntcomments, parentSeq, depthno, groupno
+    		from 
+		    	(
+        			select seq, fk_email, name, content, spoint, regDate, store_id, status, likecnt, cntcomments, parentSeq, depthno, groupno
+        			from tbl_comment
+        			where status = 1 and store_id = #{code}
+        			start with parentSeq = 0 
+        			connect by prior seq = parentSeq 
+	        		order siblings by groupno desc, seq asc  
+    			) V 
+			) T 
+    </select>
+    
     
    <!--  === 댓글쓰기(tbl_comment 테이블에 insert) === -->
    
@@ -162,30 +180,17 @@
    
    
    <insert id="registerMember" parameterType="HashMap">
-   insert into tbl_member(no, type, kakaoid, name, email, pwd, mobile,
-   registerday, status, idle, thumbnail_image)
-   values(seq_memberno.nextval, default, #{kakaoid}, #{name}, #{email}, #{pwd}, #{mobile}, default,
-   default, default, #{thumbnail_image})   
+   insert into tbl_member(no, type, kakaoid, name, email, pwd, mobile, registerday, status, idle, thumbnail_image)
+   	values(seq_memberno.nextval, default, #{kakaoid}, #{name}, #{email}, #{pwd}, #{mobile}, default, default, default, #{thumbnail_image})   
    </insert>    
    
-<!--    <insert id="createAuthKey">
-   insert into userAuth values(#{userEmail}, #{authKey})
-   </insert>
-
-   <update id="userAuth">
-      <![CDATA[update user set userCertification = 1 where (select count(*) from userAuth where userEmail = #{userEmail}) > 0]]>
-   </update> -->
-   
-
    <select id="getUserInfo" resultType="com.spring.foodie.model.MemberVO" parameterType="String">
       select * from tbl_member where email = #{email} 
    </select>	
 		
-	<!-- 지훈 끝  -->
-	
 	<insert id="likeAdd" parameterType="HashMap">
-   insert into tbl_comment_like(FK_EMAIL, FK_SEQ)
-   values(#{email}, #{seq})
+   	insert into tbl_comment_like(FK_EMAIL, FK_SEQ)
+ 	values(#{email}, #{seq})
 	</insert>
 	
 	<update id="likeAddCnt" parameterType="String">

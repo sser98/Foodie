@@ -19,8 +19,11 @@ public interface InterFoodieService {
 	// 검색하기
 	List<SearchVO> searchList(Map<String, String> paraMap);
 	
-	// 댓글 가져오기
-	List<CommentVO> getCommentList(String parentSeq);
+	// 댓글 가져오기 페이징 처리한
+	List<CommentVO> getCommentList(Map<String,String> paraMap);
+	
+	
+	int getCommentCnt(String code); // 댓글 총개수 가져오기
 	
 	// 댓글 쓰기
 	int addComment(CommentVO commentvo);
@@ -63,6 +66,10 @@ public interface InterFoodieService {
 
 	int storelike(Map<String, String> paraMap); // 찜하기 추가
 	
-	int delstorelike(Map<String, String> paraMap); // 찜하기 삭제 
+	int delstorelike(Map<String, String> paraMap); // 찜하기 삭제
+
+	
+	
+
 
 }

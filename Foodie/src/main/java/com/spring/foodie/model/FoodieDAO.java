@@ -60,12 +60,13 @@ public class FoodieDAO implements InterFoodieDAO {
 	}
 
 	@Override
-	public List<CommentVO> getCommentList(String code) {
+	public List<CommentVO> getCommentList(Map<String, String> paraMap) {
 		
-		List<CommentVO> commentList = sqlsession.selectList("foodie.getCommentList", code);
+		List<CommentVO> commentList = sqlsession.selectList("foodie.getCommentList", paraMap);
 		
 		return commentList;
 	}
+	
 	
 	
 	@Override
@@ -228,6 +229,12 @@ public class FoodieDAO implements InterFoodieDAO {
 		int n = sqlsession.delete("foodie.delstorelike", paraMap);
 		return n;
 		
+	}
+
+	@Override
+	public int getCommentCnt(String code) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	

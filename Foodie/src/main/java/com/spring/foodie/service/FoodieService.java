@@ -87,9 +87,9 @@ public class FoodieService implements InterFoodieService {
   }
 
 	@Override
-	public List<CommentVO> getCommentList(String code) {
+	public List<CommentVO> getCommentList(Map<String,String> paraMap) {
 
-		List<CommentVO> commentList = dao.getCommentList(code);
+		List<CommentVO> commentList = dao.getCommentList(paraMap);
 		return commentList;
 	}
 
@@ -250,5 +250,15 @@ public class FoodieService implements InterFoodieService {
 		int n = dao.delstorelike(paraMap);
 		return n;
 	}
+	
+	
+	@Override
+	public int getCommentCnt(String code) {
+
+		int n  = dao.getCommentCnt(code);
+		return n;
+	}
+
+	
 
 }

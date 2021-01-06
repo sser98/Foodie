@@ -13,8 +13,11 @@ public interface InterFoodieDAO {
 	//검색
 	List<SearchVO> searchList(Map<String, String> paraMap);
 	
-	// 가게 code에 맞는 댓글 List 가져오기
-	List<CommentVO> getCommentList(String code);
+	// 페이징 처리한 가게 code에 맞는 댓글 List 가져오기
+	List<CommentVO> getCommentList(Map<String, String> paraMap);
+	
+	// 게시글의 댓글 수 가져오기
+	int getCommentCnt(String code);
 	
 	// 댓글 추가하기
 	int addComment(CommentVO commentvo);

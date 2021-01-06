@@ -58,15 +58,20 @@
 			margin-left: 50%;
 		}
 
+	
 	</style>
  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=adf2708493f00cbb2f18296dc2c60b88"></script>	
  <script type="text/javascript">
- 
- 	
+
+	
+	
  	var store_id="290249009";
  	var basicInfo="";
  	var menuInfo="";
  	var menuList="";
+ 	
+ 	var len = 5;
+ 	var end = 0;
  	
  	var blogReview="";
  	var comment="";
@@ -79,6 +84,11 @@
  	
  	$(document).ready(function () {
 		
+ 		 
+ 		$("span#currentCnt").hide();
+ 		$("span#totalCnt").hide();
+ 		
+ 		
  		// 별점 클릭 이벤트
  		$("#star0").click(function() {
  			
@@ -135,13 +145,34 @@
  	         
  	      });
  	    // 별점 클릭 이벤트 끝
+	 	    
+ 	    
+ 		// 댓글을 더보기 위하여 "더 보기" 버튼 클릭액션 이벤트 
+		$("button#btnMoreComment").click(function(){
+			if($(this).text() == "처음으로") {
+				
+				$("div#commentView").empty();
+				// $("span#oqend").empty();
+				getComment(0);
+				$(this).text("더 보기");
+				
+			} else {
+				
+				getComment($(this).val());
+				
+			}// end of if($(this).text() == "처음으로"){}--------------------------
+		});// end of $("button#btnMoreOneQuery").click(function(){})----------------------    
+ 	    
+ 	    
+		
+		
  	    // 가져오기 
  		goViewJson();       // json 카카오api
- 		getComment();       // 해당 store_id 
+ 		getComment(1);       // 해당 store_id 
  		likestroechecked(); // 좋아요 체크
  		
  		
- 		  // 지도를 담을 영역의 DOM 레퍼런스 
+ 		// 지도를 담을 영역의 DOM 레퍼런스 
         var mapContainer = document.getElementById('map');
         
         // 지도를 생성할때 필요한 기본 옵션
@@ -277,17 +308,6 @@
 				
 				$("div#commentscnt").text(comment.scorecnt);
 				
-				
-	/* 				console.log(allComntcnt);
-					console.log(score);
-					console.log(json);
-				 	console.log(basicInfo.placenamefull);
-					console.log(blogReview);
-					console.log(comment);
-					console.log(menuInfo);
-					console.log(photo);
-					console.log(s2graph); */
-					
 					html ="";
 					
 					$.each(menuInfo.menuList, function (index, item) {
@@ -318,11 +338,14 @@
 		}// end of function goViewJson(){}------------------------
 		
 		
-	 	function getComment() {
+	 	function getComment(end) {
 			
 			$.ajax({
 				url:"/foodie/readComment.food",
-				data:{"code": "290249009"},
+				data:{"code": "290249009",
+					   "end" : end,
+					   "len" : len
+					   },
 				type:"GET",
 				dataType:"JSON",
 				success:function(json){
@@ -330,8 +353,7 @@
 					var html = "";
 					if(json.length > 0) {
 						$.each(json, function(index, item){
-						
-							console.log(item.depthno);
+							
 						if(item.depthno == "0") {
 							
 							html +=	"<div class='listing__details__comment__item' style='margin-bottom: 0px;'>";
@@ -355,6 +377,7 @@
 						}
 						
 						html +=	"<div class='listing__details__comment__item__pic'>";
+						
                         html += "<img src='<%=ctxPath %>/resources/img/listing/details/comment.png' alt=''>";
                         html += "</div>";
                         html += "<div id='"+index+"' class='listing__details__comment__item__text'>";
@@ -411,13 +434,28 @@
 						
 					}
 					
-					
 					$("div#commentView").html(html);
-			
+					
+					// ★★★ 중요 !!! 더보기 버튼의 value 속성에 값을 지정하기 ★★★ //
+					
+					
+					$("button#btnMoreComment").val(Number(end) + len);
+					
+					// 자기 자신의 원래 값에 불러온 json의 개수의 값을 넣어준다.
+					$("span#currentCnt").text( Number($("span#currentCnt").text()) + json.length);  // 현재 기록된 개수에 불러온 개수(배열의 길이 == 개수)를 더한다.
+					// 더보기 버튼을 계속해서 클릭해 countHIT 값과 totalHITCount 값이 일치하는 경우
+					
+					if($("span#currentCnt").text() == $("span#totalCnt").text()) {
+						
+						$("button#btnMoreComment").text("처음으로");
+						$("span#currentCnt").text("0");
+						
+					}
+					
 					},
 
 					error : function(request, status, error) {
-						alert("오류가 발생했습니다.")
+						alert("오류가 발생했습니다.");
 					}
 			
 				});
@@ -438,8 +476,14 @@
 			
 			
 			
-			// == 댓글쓰기 == //
+			// == 댓글쓰기 ==  함수인데 페이지 이동이됨?//
 			function goAddWrite() {
+					
+					if(${empty sessionScope.loginuser}) {
+						   alert("후기를 작성하시려면 먼저 로그인 하셔야 합니다.");
+						   location.href="/foodie/login.food";
+						   return;
+					   }
 					
 					var contentVal = $("textarea[name=content]").val()
 					if(contentVal == "") {
@@ -447,11 +491,13 @@
 						return;
 					}
 					
-					if(${empty sessionScope.loginuser}) {
-						   alert("후기를 작성하시려면 먼저 로그인 하셔야 합니다.");
-						   location.href="/foodie/login.food";
-						   return;
-					   }
+					var spoint=$("input[name=spoint]").val();
+					
+					if(spoint == "0") {
+						alert("별점을 클릭하세요");
+						return;
+						
+					}
 					var form_data = $("form[name=addcomment]").serialize();
 					
 					$.ajax({
@@ -485,6 +531,7 @@
 					});
 					
 			}// end of function goAddWrite(){}---------------------------
+			
 			
 			   // **** 특정댓글에 댓글 쓰기 // 
 			   function addReply(parentSeq, depthno, code, index, groupno) {
@@ -543,6 +590,7 @@
 						success:function(json){  
 							var n = json.n;
 							if(n == 0) {
+								
 								// 좋아요를 클릭한적이 없는경우 
 								   $.ajax({
 									   url:"/foodie/likeAdd.food",
@@ -551,7 +599,7 @@
 										     "email":"${sessionScope.loginuser.email}"},
 									   dataType:"JSON", 
 									   success:function(json) {
-										getComment();	
+										getComment($("button#btnMoreComment").val());	
 											
 									   },
 									   error: function(request, status, error){
@@ -562,7 +610,6 @@
 							
 							else {
 								// 좋아요를 클릭한 적이 있는경우
-								
 								$.ajax({
 									url:"<%= request.getContextPath()%>/delLikeCnt.food",
 									data:{"seq":seq,
@@ -570,7 +617,7 @@
 									type:"POST",
 									dataType:"JSON",
 									success:function(json){  
-									getComment();										
+										getComment($("button#btnMoreComment").val());										
 									},
 									error: function(request, status, error){
 										alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
@@ -717,6 +764,7 @@
 							
 						} else {
 							
+							
 						}
 																
 						
@@ -730,9 +778,77 @@
 			};
 			
 			
+			// 댓글 삭제하기 Ajax
+			function deleteComment(seq) {
+				
+				$.ajax({
+					url:"<%= request.getContextPath()%>/deleteComment.food",
+					data:{"seq":seq,
+					     "email":"${sessionScope.loginuser.email}"},
+					type:"POST",
+					dataType:"JSON",
+					success:function(json){  
+						var n = json.n;
+						console.log(n);
+						
+						if(n == 1) {
+							
+							
+							console.log("성공적으로 댓글을 삭제했습니다.")
+							
+							
+						} else {
+							
+							
+						}
+																
+						
+					},
+					
+					error: function(request, status, error){
+						alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+				 	}
+					
+				});
+			};
+			
+			// 댓글 수정하기 Ajax
+			function likestroechecked() {
+				
+				$.ajax({
+					url:"<%= request.getContextPath()%>/duplicateCheckStoreLike.food",
+					data:{"cid":cid,
+					     "email":"${sessionScope.loginuser.email}"},
+					type:"POST",
+					dataType:"JSON",
+					success:function(json){  
+						var n = json.n;
+						console.log(n);
+						
+						if(n == 1) {
+							
+							
+							$("a.primary-btn").css('color','red');
+							
+							
+						} else {
+							
+							
+						}
+																
+						
+					},
+					
+					error: function(request, status, error){
+						alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+				 	}
+					
+				});
+			};
+			
 	</script>
-
-	
+					
+					
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader">제목</div>
@@ -856,61 +972,11 @@
                             </div>
                         </div>
                         
-                        <div>
-						<div class="media">
-							<div class="media-left">
-								<img src="img_avatar1.png" class="media-object" style="width: 45px">
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading">
-									John Doe <small><i>Posted on February 19, 2016</i></small>
-								</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-									sed do eiusmod tempor incididunt ut labore et dolore magna
-									aliqua.</p>
-
-								<!-- Nested media object -->
-								<div class="media">
-									<div class="media-left">
-										<img src="img_avatar2.png" class="media-object" style="width: 45px">
-									</div>
-									
-									<div class="media-body">
-										<h4 class="media-heading">
-											John Doe <small><i>Posted on February 19, 2016</i></small>
-										</h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing
-											elit, sed do eiusmod tempor incididunt ut labore et dolore
-											magna aliqua.
-										</p>
-
-										<!-- Nested media object -->
-										<div class="media">
-											<div class="media-left">
-												<img src="img_avatar3.png" class="media-object" style="width: 45px">
-											</div>
-											<div class="media-body">
-												<h4 class="media-heading">
-													John Doe <small><i>Posted on February 19, 2016</i></small>
-												</h4>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing
-													elit, sed do eiusmod tempor incididunt ut labore et dolore
-													magna aliqua.
-												</p>
-												
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-                        
                          <div class="listing__details__review">
                             
                             <form name="addcomment">
                             	<input name ="name" type="hidden" value="${loginuser.name}">
-                            	<input name ="code" type="hidden" value="290249009">   <%-- ${code} --%>
+                            	<input name ="code" type="hidden" value="290249009">   
                             	<input name ="spoint" type="hidden" value="0">
                             	
                             	<div style="display: flex;">
@@ -937,6 +1003,11 @@
                           	
                         </div>
                         
+                        <div>
+                        	<span id="currentCnt">0</span>
+							<span id="totalCnt">${totalCnt}</span>
+							<button type="button" id="btnMoreComment" value="">더 보기</button>
+                        </div>
                        
                         
                     </div>
