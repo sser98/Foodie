@@ -89,22 +89,24 @@
 		
 	<!-- == 상품가게 에 딸린 댓글들 대댓글 정리 이전을 조회해오는 것  -->
     <select id="getCommentList" parameterType="HashMap" resultType="com.spring.foodie.model.CommentVO"> 
-		select seq, fk_email, name, content, spoint, to_char(regDate, 'yyyy-mm-dd') as regDate, store_id, status, likecnt, cntcomments, parentSeq, depthno, groupno
+		select seq, fk_email, name, content, spoint, to_char(regDate, 'yyyy-mm-dd') as regDate , store_id, status, likecnt, cntcomments, parentSeq, depthno, groupno, thumbnail_image      
 			from 
 			(
-    		select rownum AS rno
-         	, seq, fk_email, name, content, spoint, regDate, store_id, status, likecnt, cntcomments, parentSeq, depthno, groupno
-    		from 
-		    	(
-        			select seq, fk_email, name, content, spoint, regDate, store_id, status, likecnt, cntcomments, parentSeq, depthno, groupno
-        			from tbl_comment
-        			where status = 1 and store_id = #{code}
-        			start with parentSeq = 0 
-        			connect by prior seq = parentSeq 
-	        		order siblings by groupno desc, seq asc  
-    			) V 
-			) T 
-		where rno between 1 and #{endRno}
+			select rownum AS rno
+			, V.seq, V.fk_email, V.name, V.content, V.spoint, V.regDate, V.store_id, V.status, V.likecnt, V.cntcomments, V.parentSeq, V.depthno, V.groupno, M.thumbnail_image
+			from 
+			   (
+			    select seq, fk_email, name, content, spoint, regDate, store_id, status, likecnt, cntcomments, parentSeq, depthno, groupno
+			    from tbl_comment 
+			    ) V
+			    inner join tbl_member M
+			    on V.fk_email = M.email
+			    where V.status = 1 and V.store_id = #{code}
+			    start with V.parentSeq = 0 
+			    connect by prior V.seq = V.parentSeq   
+			    order siblings by V.groupno desc, V.seq asc
+			    ) T 
+			where rno between 1 and #{endRno}
     </select>
     
     	<!-- == 상품가게에 딸린 댓글의 수 얻어오기-->

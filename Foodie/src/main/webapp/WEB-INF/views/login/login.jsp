@@ -203,6 +203,7 @@ function loginWithKakao() {
 			    	    var email = res.kakao_account.email;                   // 사용자의 이메일을 얻어온다.
 			    	    var thumbnail_image = res.properties.thumbnail_image;  // 사용자의 썸네일 이미지 경로를 얻어온다.
 			    	    
+			    	    console.log(thumbnail_image);
 			    	    
 			    	    $.ajax({
 			        		url:"<%= request.getContextPath()%>/emailDuplicateCheck.food",

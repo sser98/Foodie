@@ -346,7 +346,7 @@
 					   "end" : end,
 					   "len" : len
 					   },
-				type:"GET",
+				type:"POST",
 				dataType:"JSON",
 				success:function(json){
 						
@@ -378,7 +378,12 @@
 						
 						html +=	"<div class='listing__details__comment__item__pic'>";
 						
-                        html += "<img src='<%=ctxPath %>/resources/img/listing/details/comment.png' alt=''>";
+						if(item.thumbnail_image == "0") {
+							html += "<img src='<%=ctxPath %>/resources/img/listing/details/comment.png' alt=''>";	
+						}
+						console.log(item.thumbnail_image);
+						html += "<img src='"+item.thumbnail_image+"' alt=''>";
+						
                         html += "</div>";
                         html += "<div id='"+index+"' class='listing__details__comment__item__text'>";
                         html +="<div class='listing__details__comment__item__rating'>";

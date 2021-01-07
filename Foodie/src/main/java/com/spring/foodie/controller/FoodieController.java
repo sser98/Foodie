@@ -367,7 +367,7 @@ public class FoodieController {
 	
 	// === #90. 원게시물에 딸린 댓글들을 조회해오기(Ajax 로 처리) === // 
 	@ResponseBody
-	@RequestMapping(value="/readComment.food", method= {RequestMethod.GET}, produces="text/plain;charset=UTF-8")
+	@RequestMapping(value="/readComment.food", method= {RequestMethod.POST}, produces="text/plain;charset=UTF-8")
 	public String readComment(HttpServletRequest request) {
 		
 		String code = request.getParameter("code");
@@ -401,6 +401,7 @@ public class FoodieController {
 				jsonObj.put("spoint", cmtvo.getSpoint());
 				jsonObj.put("depthno", cmtvo.getDepthno());
 				jsonObj.put("groupno", cmtvo.getGroupno());
+				jsonObj.put("thumbnail_image", cmtvo.getThumbnail_image());
 				jsonArr.put(jsonObj);
 			}
 			
@@ -646,7 +647,13 @@ public class FoodieController {
 	      
 	      LoginHistoryVO historyVO=service.getloginHistoryGap(email);
 	      
-	      if ( Integer.parseInt(historyVO.getLastlogingap()) >= 12) {
+	      
+	      	if(historyVO == null) {
+	    	  
+	    	  
+	      	}
+	      
+	      	else if ( Integer.parseInt(historyVO.getLastlogingap()) >= 12) {
 	         
 	         loginuser.setIdle("1");
 	         String message = "오랫동안 접속하지 않으셔서 아이디가 휴먼처리 되었습니다.";

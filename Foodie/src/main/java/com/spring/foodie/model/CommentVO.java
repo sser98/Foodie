@@ -21,14 +21,13 @@ public class CommentVO {
 	private String parentSeq;    // 부모 댓글번호
 	private String depthno;      // 대댓글 계층
 	private String groupno;      // 그룹번호
-	
+	private String thumbnail_image;
 	
 	public CommentVO() { }
-	
-	
+
 	public CommentVO(String seq, String fk_email, String name, String content, String spoint, String regDate,
 			String store_id, String status, String cntcomments, String likecnt, String parentSeq, String depthno,
-			String groupno) {
+			String groupno, String thumbnail_image) {
 		this.seq = seq;
 		this.fk_email = fk_email;
 		this.name = name;
@@ -42,87 +41,123 @@ public class CommentVO {
 		this.parentSeq = parentSeq;
 		this.depthno = depthno;
 		this.groupno = groupno;
+		this.thumbnail_image = thumbnail_image;
 	}
 
-
+	
 	public String getSeq() {
 		return seq;
 	}
+
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
+
 	public String getFk_email() {
 		return fk_email;
 	}
+
 	public void setFk_email(String fk_email) {
 		this.fk_email = fk_email;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	public String getSpoint() {
 		return spoint;
 	}
+
 	public void setSpoint(String spoint) {
 		this.spoint = spoint;
 	}
+
 	public String getRegDate() {
 		return regDate;
 	}
+
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
+
 	public String getStore_id() {
 		return store_id;
 	}
+
 	public void setStore_id(String store_id) {
 		this.store_id = store_id;
 	}
+
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
 	public String getCntcomments() {
 		return cntcomments;
 	}
+
 	public void setCntcomments(String cntcomments) {
 		this.cntcomments = cntcomments;
 	}
+
 	public String getLikecnt() {
 		return likecnt;
 	}
+
 	public void setLikecnt(String likecnt) {
 		this.likecnt = likecnt;
 	}
+
 	public String getParentSeq() {
 		return parentSeq;
 	}
+
 	public void setParentSeq(String parentSeq) {
 		this.parentSeq = parentSeq;
 	}
+
 	public String getDepthno() {
 		return depthno;
 	}
+
 	public void setDepthno(String depthno) {
 		this.depthno = depthno;
 	}
+
 	public String getGroupno() {
 		return groupno;
 	}
+
 	public void setGroupno(String groupno) {
 		this.groupno = groupno;
 	}
+
+	public String getThumbnail_image() {
+		return thumbnail_image;
+	}
+
+	public void setThumbnail_image(String thumbnail_image) {
+		this.thumbnail_image = thumbnail_image;
+	}
+	
+	
 	
 		
 }
