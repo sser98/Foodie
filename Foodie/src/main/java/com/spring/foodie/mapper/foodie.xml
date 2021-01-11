@@ -251,6 +251,37 @@
 		where fk_email = #{email} and store_id = #{cid}
 	</delete>
 	
+	<select id="getOnePointCnt" parameterType="String" resultType="Int">
+		select count(*)
+		from tbl_comment
+		where spoint = 1 and store_id= #{code}
+	</select>
+	
+	<select id="getTwoPointCnt" parameterType="String" resultType="Int">
+		select count(*)
+		from tbl_comment
+		where spoint = 2 and store_id=#{code}
+	</select>
+	
+	<select id="getThreePointCnt" parameterType="String" resultType="Int">
+		select count(*)
+		from tbl_comment
+		where spoint = 3 and store_id=#{code}
+	</select>
+	
+		
+	<select id="getFourPointCnt" parameterType="String" resultType="Int">
+		select count(*)
+		from tbl_comment
+		where spoint = 4 and store_id=#{code}
+	</select>
+	
+	<select id="getFivePointCnt" parameterType="String" resultType="Int">
+		select count(*)
+		from tbl_comment
+		where spoint = 5 and store_id=#{code}
+	</select>
+	
 </mapper>
 
 

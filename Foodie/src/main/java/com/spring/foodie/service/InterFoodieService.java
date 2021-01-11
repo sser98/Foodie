@@ -67,6 +67,19 @@ public interface InterFoodieService {
 	int storelike(Map<String, String> paraMap); // 찜하기 추가
 	
 	int delstorelike(Map<String, String> paraMap); // 찜하기 삭제
+	
+	// 가게별 점수 수 가져오기
+	int getPointCnt(Map<String, String> paraMap);
+
+	// 컬럼 수 가져오기
+	int getOnePointCnt(String code);
+	int getTwoPointCnt(String code);
+	int getThreePointCnt(String code);
+	int getFourPointCnt(String code);
+	int getFivePointCnt(String code);
+	
+	
+	
 
 	
 	

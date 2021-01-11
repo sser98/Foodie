@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Repository;
 
 //=== #32. DAO 선언 ===
@@ -139,14 +140,7 @@ public class FoodieDAO implements InterFoodieDAO {
 	   }
 
 	@Override
-	public List<CommentVO> getCommentListPaging(Map<String, String> paraMap) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public int getCommentTotalCount(Map<String, String> paraMap) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -232,10 +226,48 @@ public class FoodieDAO implements InterFoodieDAO {
 	}
 
 	@Override
-	public int getCommentCnt(String code) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getOnePointCnt(String code) {
+		int n = sqlsession.selectOne("foodie.getOnePointCnt", code);
+		return n;
 	}
+
+	@Override
+	public int getTwoPointCnt(String code) {
+		int n = sqlsession.selectOne("foodie.getTwoPointCnt", code);
+		return n;
+	}
+	
+	@Override
+	public int getThreePointCnt(String code) {
+		int n = sqlsession.selectOne("foodie.getThreePointCnt", code);
+		return n;
+	}
+	
+	
+	@Override
+	public int getFourPointCnt(String code) {
+		int n = sqlsession.selectOne("foodie.getFourPointCnt", code);
+		return n;
+	}
+
+	@Override
+	public int getFivePointCnt(String code) {
+		int n = sqlsession.selectOne("foodie.getFivePointCnt", code);
+		return n;
+	}
+
+	@Override
+	public int getCommentCnt(String code) {
+		int n = sqlsession.selectOne("foodie.getCommentCnt", code); 
+		return n;
+	}
+
+	@Override
+	public List<CommentVO> getCommentListPaging(Map<String, String> paraMap) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	
 	
 	

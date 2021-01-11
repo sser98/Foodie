@@ -69,6 +69,20 @@ public interface InterFoodieDAO {
 
 	int delstorelike(Map<String, String> paraMap); // 가게 찜하기 삭제하기
 	
+	
+	// 컬럼수 얻어오기 
+	int getOnePointCnt(String code);
+
+	int getTwoPointCnt(String code);
+
+	int getThreePointCnt(String code);
+
+	int getFourPointCnt(String code);
+
+	int getFivePointCnt(String code);
+	
+	
+	
 }
 
 

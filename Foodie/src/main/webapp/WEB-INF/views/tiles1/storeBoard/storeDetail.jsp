@@ -80,8 +80,8 @@
  	var s2graph="";
  	var feedback="";
  	var cid="";
- 	
- 	
+ 	var photo="";
+ 	var mainphotourl="";
  	$(document).ready(function () {
 		
  		 
@@ -152,7 +152,7 @@
 			if($(this).text() == "처음으로") {
 				
 				$("div#commentView").empty();
-				// $("span#oqend").empty();
+				
 				getComment(0);
 				$(this).text("더 보기");
 				
@@ -265,6 +265,15 @@
              image: markerImage  // 마커이미지 설정
         });
         
+       	 // 가져온 데이터를 attr으로 넣기  
+/*          $("span#chart1").attr("data-percentage", "${paraMap.one}");
+         $("span#chart2").attr("data-percentage", "${paraMap.two}");
+         $("span#chart3").attr("data-percentage", "${paraMap.three}");
+         $("span#chart4").attr("data-percentage", "${paraMap.four}");
+         $("span#chart5").attr("data-percentage", "${paraMap.five}"); */
+         
+         
+         
 	}); // end of ready
  	
  	function goViewJson() {
@@ -284,18 +293,18 @@
 				photo=json.photo;
 				s2graph=json.s2graph;
 				feedback=json.feedback;
-				
+				photo=json.photo;
 				cid=basicInfo.cid;
 				
 				console.log(cid);
+				console.log(basicInfo);
 				
-				$("#adress_detail").text(basicInfo.address.region.fullname+basicInfo.address.newaddr.newaddrfull);
+				$("#adress_detail").text(basicInfo.address.region.fullname+" "+basicInfo.address.newaddr.newaddrfull);
 				$("a#page").text(basicInfo.homepage);
 				$("#store_name").text(basicInfo.placenamefull);				
 				$("label#adress_detail").text(basicInfo.address.region.fullname+basicInfo.address.newaddr.newaddrfull);
 				$("label#email").text("");
 				$("label#phone").text(basicInfo.phonenum);
-				
 				
 				var scorercnt = comment.scorecnt;
 				var scoresum = comment.scoresum;
@@ -303,11 +312,9 @@
 				var score =scoresum/scorercnt;
 				
 				
-				
 				score=score.toFixed(1);
-				
 				$("div#commentscnt").text(comment.scorecnt);
-				
+
 					html ="";
 					
 					$.each(menuInfo.menuList, function (index, item) {
@@ -315,20 +322,42 @@
 						var menu=item.menu;
 						var price=item.price;
 						html += "<li>"+menu+"  :   "+price+"</li>";
+						
 					});
 					
 					$("div#menuList").html(html);
 					
+					
+					// 메인 photourl 가져오기					
+					mainphotourl=basicInfo.mainphotourl
+					
 					html ="";
+					html ="<img class='listing__details__gallery__item__large' src='"+mainphotourl+"' alt=''>";
 					
-					var mainphotourl=basicInfo.mainphotourl
+					$("div.listing__details__gallery__item").html(html);
 					
-					console.log(mainphotourl);
 					
-					$.each(menuInfo.menuList, function (index, item) {
+					html="";
+					$.each(photo, function (index, item) {
 						
+						var food1=item[1];
+						var photolist=food1['list'];
+						
+						$.each(photolist, function (index, item) {
+							
+							console.log(item['orgurl']);
+								
+							var orgurl=item['orgurl'];
+							
+							
+							html +="<img data-imgbigurl='"+mainphotourl+"' src='"+orgurl+"' alt=''>";
+							
+							
+							});
+							
 					});
-					$("div.listing__details__gallery__slider").html(html);
+					// $("div.listing__details__gallery__slider").html(html);
+					
 				},
 				error : function(request, status, error) {
 				}
@@ -585,6 +614,8 @@
 						   return;
 					   }
 					
+					
+					
 					// 중복검사 ajax
 					$.ajax({
 						url:"<%= request.getContextPath()%>/duplicateCheckLike.food",
@@ -748,7 +779,7 @@
 				
 			};   
 			
-			// 가고싶다에 이전에 클릭했을 경우 해당 a태그에 색깔 체크를 한다.
+			// 가고싶다에 이전에 클릭했을 경우 
 			function likestroechecked() {
 				
 				$.ajax({
@@ -799,7 +830,7 @@
 						if(n == 1) {
 							
 							
-							console.log("성공적으로 댓글을 삭제했습니다.")
+							console.log("성공적으로 댓글을 삭제했습니다.");
 							
 							
 						} else {
@@ -850,6 +881,9 @@
 					
 				});
 			};
+			
+			
+
 			
 	</script>
 					
@@ -903,24 +937,17 @@
                 <div class="col-lg-8">
                     <div class="listing__details__text">
 
-                        
+
                         <div class="listing__details__gallery" style="padding-top: 0pt;">
-                            <div class="listing__details__gallery__pic">
+                             <div class="listing__details__gallery__pic">
                                 <div class="listing__details__gallery__item">
-                                    <img class="listing__details__gallery__item__large" src="<%=ctxPath %>/resources/img/listing/details/listing-details-1.jpg" alt="">
-                                    <span><i class="fa fa-camera"></i> 170 Image</span>
+                                
                                 </div>
-                                <div class="listing__details__gallery__slider owl-carousel">
-                                   <img data-imgbigurl="<%=ctxPath %>/resources/img/listing/details/listing-details-1.jpg"
-                                        src="<%=ctxPath %>/resources/img/listing/details/thumb-1.jpg" alt="">
-                                    <img data-imgbigurl="<%=ctxPath %>/resources/img/listing/details/listing-details-1.jpg"
-                                        src="<%=ctxPath %>/resources/img/listing/details/thumb-2.jpg" alt="">
-                                    <img data-imgbigurl="<%=ctxPath %>/resources/img/listing/details/listing-details-1.jpg"
-                                        src="<%=ctxPath %>/resources/img/listing/details/thumb-3.jpg" alt="">
-                                    <img data-imgbigurl="<%=ctxPath %>/resources/img/listing/details/listing-details-1.jpg"
-                                        src="<%=ctxPath %>/resources/img/listing/details/thumb-4.jpg" alt=""> 
+                                <div class="listing__details__gallery__slider owl-carousel"> 
+                             		  
                                 </div>
                             </div>
+                             
                         </div>
                                                 
                         <div id="menuList" class="listing__details__menu"></div>                                               
@@ -940,39 +967,39 @@
                             </div>
                             <div class="listing__details__rating__bar">
                                 <div class="listing__details__rating__bar__item">
-                                    <span>1</span>
-                                    <div id="bar1" class="barfiller">
-                                        <span class="fill" data-percentage="100"></span>
-                                    </div>
-                                    <span class="right">1</span>
-                                </div>
-                                <div class="listing__details__rating__bar__item">
-                                    <span>2</span>
-                                    <div id="bar2" class="barfiller">
-                                        <span class="fill" data-percentage="75"></span>
-                                    </div>
-                                    <span class="right">2</span>
-                                </div>
-                                <div class="listing__details__rating__bar__item">
-                                    <span>3</span>
-                                    <div id="bar3" class="barfiller">
-                                        <span class="fill" data-percentage="80"></span>
-                                    </div>
-                                    <span class="right">3</span>
-                                </div>
-                                <div class="listing__details__rating__bar__item">
-                                    <span>4</span>
-                                    <div id="bar4" class="barfiller">
-                                        <span class="fill" data-percentage="80"></span>
-                                    </div>
-                                    <span class="right">4</span>
-                                </div>
-                                <div class="listing__details__rating__bar__item">
-                                    <span>5</span>
+                                    <span>5점</span>
                                     <div id="bar5" class="barfiller">
-                                        <span class="fill" data-percentage="85"></span>
+                                        <span class="fill" data-percentage="${paraMap.five}"></span>
                                     </div>
-                                    <span class="right">5</span>
+                                    <span class="right">${paraMap.cntFive}</span>
+                                </div>
+                                <div class="listing__details__rating__bar__item">
+                                    <span>4점</span>
+                                    <div id="bar4" class="barfiller">
+                                        <span class="fill" data-percentage="${paraMap.four}"></span>
+                                    </div>
+                                    <span class="right">${paraMap.cntFour}</span>
+                                </div>
+                                <div class="listing__details__rating__bar__item">
+                                    <span>3점</span>
+                                    <div id="bar3" class="barfiller">
+                                        <span class="fill" data-percentage="${paraMap.three}"></span>
+                                    </div>
+                                    <span class="right">${paraMap.cntThree}</span>
+                                </div>
+                                <div class="listing__details__rating__bar__item">
+                                    <span>2점</span>
+                                    <div id="bar2" class="barfiller">
+                                        <span class="fill" data-percentage="${paraMap.two}"></span>
+                                    </div>
+                                    <span class="right">${paraMap.cntTwo}</span>
+                                </div>
+                                <div class="listing__details__rating__bar__item">
+                                    <span>1점</span>
+                                    <div id="bar1" class="barfiller">
+                                        <span class="fill" data-percentage="${paraMap.one}"></span>
+                                    </div>
+                                    <span class="right">${paraMap.cntOne}</span>
                                 </div>
                             </div>
                         </div>

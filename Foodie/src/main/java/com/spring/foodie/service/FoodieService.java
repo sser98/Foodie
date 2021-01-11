@@ -259,6 +259,43 @@ public class FoodieService implements InterFoodieService {
 		return n;
 	}
 
+	@Override
+	public int getPointCnt(Map<String, String> paraMap) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getOnePointCnt(String code) {
+		
+		int n = dao.getOnePointCnt(code);
+		return n;
+	}
+
+	@Override
+	public int getTwoPointCnt(String code) {
+		int n = dao.getTwoPointCnt(code);
+		return n;
+	}
+
+	@Override
+	public int getThreePointCnt(String code) {
+		int n = dao.getThreePointCnt(code);
+		return n;
+	}
+
+	@Override
+	public int getFourPointCnt(String code) {
+		int n = dao.getFourPointCnt(code);
+		return n;
+	}
+	
+	@Override
+	public int getFivePointCnt(String code) {
+		int n = dao.getFivePointCnt(code);
+		return n;
+	}
+
 	
 
 }
